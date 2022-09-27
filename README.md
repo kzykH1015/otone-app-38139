@@ -16,15 +16,15 @@
 
 ## Contents テーブル
 
-|Column|Type|Options|
-|------|----|-------|
-|title|string|null: false, unique: true|
-|category|references|null: false, foreign_key: true|
-|genre|string|null: false|
-|release_date|date||
-|creator|string|null: false|
-|story_line|text||
-| user    | references | null: false, foreign_key: true |
+| Column        | Type       | Options                        |
+| ------------- | ---------- | ------------------------------ |
+| title         | string     | null: false, unique: true      |
+| category      | references | null: false, foreign_key: true |
+| genre         | string     | null: false                    |
+| release_date  | date       |                                |
+| creator       | string     | null: false                    |
+| story_line    | text       |                                |
+| user          | references | null: false, foreign_key: true |
 
 
 ### Association
@@ -35,11 +35,11 @@
 
 ## Comments テーブル
 
-| Column             | Type   | Options                   |
-| ------------------ | ------ | ------------------------- |
-| comment_text      | text | null: false |
-| user    | references | null: false, foreign_key: true |
-| content    | references | null: false, foreign_key: true |
+| Column       | Type       | Options                        |
+| ------------ | ---------- | ------------------------------ |
+| comment_text | text       | null: false                    |
+| user         | references | null: false, foreign_key: true |
+| content      | references | null: false, foreign_key: true |
 ### Association
 
 - has_one :user
@@ -47,11 +47,11 @@
 
 ## Recommendations テーブル
 
-| Column             | Type   | Options                   |
-| ------------------ | ------ | ------------------------- |
-| recommend_user    | references | null: false, foreign_key: true |
-| user    | references | null: false, foreign_key: true |
-| content    | references | null: false, foreign_key: true |
+| Column         | Type       | Options                        |
+| -------------- | ---------- | ------------------------------ |
+| recommend_user | references | null: false, foreign_key: true |
+| user           | references | null: false, foreign_key: true |
+| content        | references | null: false, foreign_key: true |
 ### Association
 
 - has_one :user
@@ -59,10 +59,10 @@
 
 ## Favorites テーブル
 
-| Column             | Type   | Options                   |
-| ------------------ | ------ | ------------------------- |
+| Column  | Type       | Options                        |
+| ------- | ---------- | ------------------------------ |
 | user    | references | null: false, foreign_key: true |
-| content    | references | null: false, foreign_key: true |
+| content | references | null: false, foreign_key: true |
 ### Association
 
 - has_one :user
