@@ -1,24 +1,69 @@
-# README
+## Users テーブル
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+| Column             | Type   | Options                   |
+| ------------------ | ------ | ------------------------- |
+| nickname           | string | null: false, unique: true |
+| email              | string | null: false, unique: true |
+| encrypted_password | string | null: false               |
+| self_introduction  | text   |                           |
+### Association
 
-Things you may want to cover:
+- has_many :contents
+- has_many :comments
+- has_many :recommendations
+- has_many :favorites
 
-* Ruby version
 
-* System dependencies
+## Contents テーブル
 
-* Configuration
+|Column|Type|Options|
+|------|----|-------|
+|title|string|null: false, unique: true|
+|category|references|null: false, foreign_key: true|
+|genre|string|null: false|
+|release_date|date||
+|creator|string|null: false|
+|story_line|text||
+| user    | references | null: false, foreign_key: true |
 
-* Database creation
 
-* Database initialization
+### Association
+- belongs_to :user
+- has_many :comments
+- has_many :recommendations
+- has_many :favorites
 
-* How to run the test suite
+## Comments テーブル
 
-* Services (job queues, cache servers, search engines, etc.)
+| Column             | Type   | Options                   |
+| ------------------ | ------ | ------------------------- |
+| comment_text      | text | null: false |
+| user    | references | null: false, foreign_key: true |
+| content    | references | null: false, foreign_key: true |
+### Association
 
-* Deployment instructions
+- has_one :user
+- has_one :content
 
-* ...
+## Recommendations テーブル
+
+| Column             | Type   | Options                   |
+| ------------------ | ------ | ------------------------- |
+| recommend_user    | references | null: false, foreign_key: true |
+| user    | references | null: false, foreign_key: true |
+| content    | references | null: false, foreign_key: true |
+### Association
+
+- has_one :user
+- has_one :content
+
+## Favorites テーブル
+
+| Column             | Type   | Options                   |
+| ------------------ | ------ | ------------------------- |
+| user    | references | null: false, foreign_key: true |
+| content    | references | null: false, foreign_key: true |
+### Association
+
+- has_one :user
+- has_one :content
