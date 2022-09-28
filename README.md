@@ -19,7 +19,7 @@
 | Column        | Type       | Options                        |
 | ------------- | ---------- | ------------------------------ |
 | title         | string     | null: false, unique: true      |
-| category      | references | null: false, foreign_key: true |
+| category_id   | integer    | null: false                    |
 | genre         | string     | null: false                    |
 | release_date  | date       |                                |
 | creator       | string     | null: false                    |
