@@ -1,0 +1,43 @@
+/* mainに対するcss */
+.content-index-main {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  grid-template-rows: 50px 1fr;
+}
+/* mainに対するcss */
+
+/* leftとrightのupとunder */
+.left-up {
+  background-color: aliceblue;
+  font-size: 20px;
+  line-height: 50px;
+  text-align: center;
+}
+
+.left-under {
+  background-color: antiquewhite;
+}
+
+.right-up {
+  background-color: aqua;
+  padding-left: 10px;
+  line-height: 50px;
+  font-size: 25px;
+  letter-spacing: 7px;
+}
+
+.right-under {
+  background-color: blue;
+}
+/* leftとrightのupとunder */
+
+/* 中身の要素 */
+.user-info {
+  font-size: 20px;
+  font-weight: 600;
+  text-align: center;
+  margin-top: 10px;
+}
+/* 中身の要素 */

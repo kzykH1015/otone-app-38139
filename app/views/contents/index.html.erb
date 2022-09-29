@@ -1,4 +1,16 @@
-<h1>top-page</h1>
-<% if user_signed_in? %>
-  <%= @user.nickname %>
-<% end %>
+<h1>otone-app</h1>
+
+
+
+<div class="content-index-main">
+  <div class="left-up">ユーザー情報</div>
+  <div class="right-up">作品一覧</div>
+  <div class="left-under">
+    <% if user_signed_in? %>
+      <div class="user-info">
+        <%= @user.nickname %>
+      </div>
+    <% end %>
+  </div>
+  <div class="right-under"></div>
+</div>
