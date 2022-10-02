@@ -1,6 +1,20 @@
-<div>
-  <% form_with model: @content, url: contents_path, method: :post, local: true do |f| %>
+<div class="new-content-main">
+  <%= form_with model: @content, url: contents_path, method: :post, class:"new-content-form", local: true do |f| %>
+    <div>
     <%= f.text_field :title %>
+    </div>
     <%= f.text_area :story_line %>
+    <div>
+    <%= f.collection_select(:category_id, Category.all, :id, :name, {include_blank: "---"}, {class:"select-box", id:"content-category"}) %>
+    </div>
+    <div></div>
+    <div class="new-submit">
+      <%= f.submit "投稿する", class:"submit-btn" %>
+    </div>
   <% end %>
+  <div class="top-return">
+  <%= link_to root_path, class:"top-page-return" do %>
+    <div class="top-re">トップページへ</div>
+  <% end %>
+  </div>
 </div>

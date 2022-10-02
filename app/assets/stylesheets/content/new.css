@@ -1,0 +1,45 @@
+/* 新規投稿の大枠 */
+.new-content-main {
+  height: 100vh;
+  width: 100vw;
+  display: grid;
+  grid-template-columns: 1fr 400px 1fr;
+  grid-template-rows: 50px 400px 1fr;
+  grid-template-areas: 
+    "areaA areaC areaB"
+    "areaA areaD areaB"
+    "areaA areaE areaB"; 
+}
+/* 新規投稿の大枠 */
+
+.new-content-form {
+  padding: 10px;
+  text-align: center;
+  grid-area: areaD;
+}
+
+.new-submit {
+  grid-area: areaB;
+}
+
+.submit-btn {
+  width: 100px;
+  height: 40px;
+  font-size: 20px;
+  font-weight: 800;
+  background-color: antiquewhite;
+}
+
+.top-return {
+  grid-area: areaE;
+  margin: 0 auto;
+  width: 120px;
+  height: 30px;
+  font-size: 15px;
+  background-color: azure;
+  border: 1px solid black;
+  border-radius: 10px;
+  text-decoration: none;
+  text-align: center;
+  line-height: 30px;
+}
