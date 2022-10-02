@@ -14,7 +14,6 @@
 
 .new-content-form {
   padding: 10px;
-  text-align: center;
   grid-area: areaD;
 }
 
@@ -42,4 +41,8 @@
   text-decoration: none;
   text-align: center;
   line-height: 30px;
+}
+
+.form-wrap {
+  
 }
