@@ -1,6 +1,5 @@
 class ContentsController < ApplicationController
   def index
-    @user = User.find(current_user.id)
     @contents = Content.all
   end
 
