@@ -1,4 +1,14 @@
 <h1>otone-app</h1>
+<%= link_to new_user_session_path, class:"user-btn" do %>
+ <div>ログイン</div>
+<% end %>
+<%= link_to new_user_registration_path, class:"user-btn" do %>
+ <div>新規登録</div>
+<% end %>
+<%= link_to destroy_user_session_path, method: :delete, class:"user-btn" do %>
+ <div>ログアウト</div>
+<% end %>
+
 <%= link_to new_content_path, class:"new-content-btn" do %>
   <div>作品投稿</div>
 <% end %>
@@ -10,7 +20,10 @@
   <div class="left-under">
     <% if user_signed_in? %>
       <div class="user-info">
-        <%= @user.nickname %>
+        <%= current_user.nickname %>
+      </div>
+      <div>
+      <%= current_user.self_introduction %>
       </div>
     <% end %>
   </div>
