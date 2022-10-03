@@ -1,21 +1,29 @@
-<h1>otone-app</h1>
-<%= link_to new_user_session_path, class:"user-btn" do %>
- <div>ログイン</div>
-<% end %>
-<%= link_to new_user_registration_path, class:"user-btn" do %>
- <div>新規登録</div>
-<% end %>
-<%= link_to destroy_user_session_path, method: :delete, class:"user-btn" do %>
- <div>ログアウト</div>
-<% end %>
+<div class="index-header">
+  <h1>otone-app</h1>
+  <div class="user-login-menu">
+    <% if user_signed_in? %>
+      <%= link_to destroy_user_session_path, method: :delete, class:"user-btn" do %>
+        <div>ログアウト</div>
+      <% end %>
+    <% else %>
+      <%= link_to new_user_session_path, class:"user-btn" do %>
+        <div>ログイン</div>
+      <% end %>
+      <%= link_to new_user_registration_path, class:"user-btn" do %>
+        <div>新規登録</div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
 
-<%= link_to new_content_path, class:"new-content-btn" do %>
-  <div>作品投稿</div>
-<% end %>
 
 <div class="content-index-main">
   <div class="left-up">ユーザー情報</div>
-  <div class="right-up">作品一覧</div>
+  <div class="right-up">作品一覧
+    <%= link_to new_content_path, class:"new-content-btn" do %>
+      <div>作品投稿</div>
+    <% end %>
+  </div>
   
   <div class="left-under">
     <% if user_signed_in? %>

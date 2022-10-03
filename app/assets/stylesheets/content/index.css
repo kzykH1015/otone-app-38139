@@ -8,6 +8,24 @@
 }
 /* mainに対するcss */
 
+/* indexのheader */
+.index-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 70px;
+  line-height: 50px;
+  padding: 10px;
+}
+
+.user-login-menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 200px;
+}
+/* indexのheader */
+
 /* leftとrightのupとunder */
 .left-up {
   background-color: aliceblue;
@@ -41,6 +59,18 @@
   margin-top: 10px;
 }
 /* left-under 中身の要素 */
+
+/* right-upの中身 */
+.new-content-btn {
+  display: inline-block;
+  text-decoration: none;
+  line-height: 50px;
+  font-size: 20px;
+  height: 47px;
+  background-color: aquamarine;
+  border: 1px solid black;
+}
+/* right-upの中身 */
 
 /* right-under 中身 */
 
