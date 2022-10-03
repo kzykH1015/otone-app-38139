@@ -30,17 +30,15 @@
 
   <div class="right-under">
     <div class="contents-list">
-      <% if @contents.exists? %>
-        <% @contents.each do |content| %>
-          <div class="content-wrap">
-            <div class="content-title">
-              <%= content.title %>
-            </div>
-            <div class="content-category">
-              <%= Category.find(content.category_id).name %>
-            </div>
+      <% @contents.each do |content| %>
+        <div class="content-wrap">
+          <div class="content-title">
+            <%= content.title %>
           </div>
-        <% end %>
+          <div class="content-category">
+            <%= Category.find(content.category_id).name %>
+          </div>
+        </div>
       <% end %>
     </div>
   </div>
