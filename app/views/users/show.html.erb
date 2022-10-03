@@ -34,5 +34,8 @@
       <%= @user.self_introduction %>
       </div>
     <% end %>
+    <% if @user.id == current_user.id %>
+      <%= link_to "ユーザー編集", edit_user_registration_path, method: :get %>
+    <% end %>
   </div>
 </div>
