@@ -3,11 +3,10 @@
   <div>作品投稿</div>
 <% end %>
 
-
-
 <div class="content-index-main">
   <div class="left-up">ユーザー情報</div>
   <div class="right-up">作品一覧</div>
+  
   <div class="left-under">
     <% if user_signed_in? %>
       <div class="user-info">
@@ -15,5 +14,19 @@
       </div>
     <% end %>
   </div>
-  <div class="right-under"></div>
+
+  <div class="right-under">
+    <div class="contents-list">
+      <% @contents.each do |content| %>
+        <div class="content-wrap">
+          <div class="content-title">
+            <%= content.title %>
+          </div>
+          <div class="content-category">
+            <%= Category.find(content.category_id).name %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>
