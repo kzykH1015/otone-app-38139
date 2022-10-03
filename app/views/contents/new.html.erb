@@ -1,0 +1,40 @@
+<div class="new-content-main">
+  <%= form_with model: @content, url: contents_path, method: :post, class:"new-content-form", local: true do |f| %>
+    <div>
+      <div>
+        <label class="form-wrap">タイトル</label>
+      </div>
+      <%= f.text_field :title %>
+    </div>
+
+    <div>
+      <div>
+        <label class="form-wrap">あらすじ</label>
+      </div>
+      <%= f.text_area :story_line %>
+    </div>
+
+    <div>
+      <div>
+        <label class="form-wrap">カテゴリー</label>
+      </div>
+      <%= f.collection_select(:category_id, Category.all, :id, :name, {include_blank: "---"}, {class:"select-box", id:"content-category"}) %>
+    </div>
+
+    <div>
+      <div>
+        <label class="form-wrap">発売日</label>
+      </div>
+      <%= f.date_field :release_date %>
+    </div>
+
+    <div class="new-submit">
+      <%= f.submit "投稿する", class:"submit-btn" %>
+    </div>
+  <% end %>
+  <div class="top-return">
+  <%= link_to root_path, class:"top-page-return" do %>
+    <div class="top-re">トップページへ</div>
+  <% end %>
+  </div>
+</div>
