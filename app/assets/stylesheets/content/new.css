@@ -10,6 +10,12 @@
     "areaA areaD areaB"
     "areaA areaE areaB"; 
 }
+
+.content-new-header {
+  grid-area: areaC;
+  font-size: 30px;
+  font-weight: 700;
+}
 /* 新規投稿の大枠 */
 
 .new-content-form {

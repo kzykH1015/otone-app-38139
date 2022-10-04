@@ -1,15 +1,17 @@
 class ContentsController < ApplicationController
+  before_action :find_content, only: [:show, :edit]
   def index
     @contents = Content.all
   end
 
   def new
-    @content = Content.new
+    @content_form = ContentForm.new
   end
 
   def create
-    @content = Content.new(content_params)
-    if @content.save
+    @content_form = ContentForm.new(content_form_params)
+    if @content_form.valid?
+      @content_form.save
       redirect_to root_path
     else
       render :new
@@ -17,13 +19,20 @@ class ContentsController < ApplicationController
   end
 
   def show
-    @content = Content.find(params[:id])
     @user = User.find(@content.user_id)
   end
 
-  private
+  def edit
+    content_attributes = @content.attributes
+    @content_form = ContentForm.new(content_attributes)
+  end
 
-  def content_params
-    params.require(:content).permit(:title, :category_id, :story_line, :release_date).merge(user_id: current_user.id)
+  private
+  def content_form_params
+    params.require(:content_form).permit(:title, :category_id, :story_line, :release_date, :genre_name, :creator_name).merge(user_id: current_user.id)
+  end
+
+  def find_content
+    @content = Content.find(params[:id])
   end
 end

@@ -10,7 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_09_27_211909) do
+ActiveRecord::Schema.define(version: 2022_10_04_051858) do
+
+  create_table "content_creator_relations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "content_id"
+    t.bigint "creator_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["content_id"], name: "index_content_creator_relations_on_content_id"
+    t.index ["creator_id"], name: "index_content_creator_relations_on_creator_id"
+  end
+
+  create_table "content_genre_relations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "content_id"
+    t.bigint "genre_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["content_id"], name: "index_content_genre_relations_on_content_id"
+    t.index ["genre_id"], name: "index_content_genre_relations_on_genre_id"
+  end
 
   create_table "contents", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title", null: false
@@ -21,6 +39,18 @@ ActiveRecord::Schema.define(version: 2022_09_27_211909) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_contents_on_user_id"
+  end
+
+  create_table "creators", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "creator_name", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "genres", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "genre_name", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -37,5 +67,9 @@ ActiveRecord::Schema.define(version: 2022_09_27_211909) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "content_creator_relations", "contents"
+  add_foreign_key "content_creator_relations", "creators"
+  add_foreign_key "content_genre_relations", "contents"
+  add_foreign_key "content_genre_relations", "genres"
   add_foreign_key "contents", "users"
 end
