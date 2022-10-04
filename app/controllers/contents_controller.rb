@@ -25,6 +25,6 @@ class ContentsController < ApplicationController
   private
 
   def content_form_params
-    params.require(:content_form).permit(:title, :category_id, :story_line, :release_date).merge(user_id: current_user.id)
+    params.require(:content_form).permit(:title, :category_id, :story_line, :release_date, :genre_name).merge(user_id: current_user.id)
   end
 end
