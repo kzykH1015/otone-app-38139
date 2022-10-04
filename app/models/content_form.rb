@@ -3,7 +3,6 @@ class ContentForm
 
   attr_accessor(
     :title, :category_id, :story_line, :release_date, :user_id,
-    :id, :created_at, :datetime, :updated_at,
     :genre_name, :creator_name
   )
 
@@ -12,11 +11,12 @@ class ContentForm
     validates :category_id
     validates :story_line
     validates :release_date
+    validates :user_id
   end
 
   def save
     content = Content.create(
-      title: title, category_id: category_id, story_line: story_line, release_date: release_date
+      title: title, category_id: category_id, story_line: story_line, release_date: release_date, user_id: user_id
     )
     genre = Genre.where(genre_name: genre_name).first_or_initialize
     genre.save
