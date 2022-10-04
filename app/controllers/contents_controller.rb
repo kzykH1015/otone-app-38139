@@ -16,6 +16,9 @@ class ContentsController < ApplicationController
     end
   end
 
+  def show
+  end
+
   private
 
   def content_params
