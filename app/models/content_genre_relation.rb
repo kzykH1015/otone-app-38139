@@ -1,0 +1,2 @@
+class ContentGenreRelation < ApplicationRecord
+end
