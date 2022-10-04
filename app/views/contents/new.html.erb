@@ -1,4 +1,5 @@
 <div class="new-content-main">
+<div class="content-new-header">作品新規投稿</div>
   <%= form_with model: @content, url: contents_path, method: :post, class:"new-content-form", local: true do |f| %>
     <div>
       <div>
@@ -9,16 +10,23 @@
 
     <div>
       <div>
-        <label class="form-wrap">あらすじ</label>
+        <label class="form-wrap">カテゴリー</label>
       </div>
-      <%= f.text_area :story_line %>
+      <%= f.collection_select(:category_id, Category.all, :id, :name, {include_blank: "---"}, {class:"select-box", id:"content-category"}) %>
     </div>
 
     <div>
       <div>
-        <label class="form-wrap">カテゴリー</label>
+        <label class="form-wrap">制作者</label>
       </div>
-      <%= f.collection_select(:category_id, Category.all, :id, :name, {include_blank: "---"}, {class:"select-box", id:"content-category"}) %>
+      <%= f.collection_select(:creator_id, CreatorCategory.all, :id, :name, {include_blank: "---"}, {class:"select-box", id:"content-category"}) %>
+    </div>
+
+    <div>
+      <div>
+        <label class="form-wrap">あらすじ</label>
+      </div>
+      <%= f.text_area :story_line %>
     </div>
 
     <div>
