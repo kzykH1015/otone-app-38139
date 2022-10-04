@@ -3,7 +3,7 @@ class ContentForm
 
   attr_accessor(
     :title, :category_id, :story_line, :release_date, :user_id,
-    :id, :created_at,:datetime, :updated_at,
+    :id, :created_at, :datetime, :updated_at,
     :genre_name, :creator_name
   )
 
