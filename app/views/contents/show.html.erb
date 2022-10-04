@@ -13,11 +13,11 @@
 </div>
 
 <div>
-  ジャンル：<%= @content.genre.first.genre_name if @content.genre.first.present? %>
+  ジャンル：<%= @content.genre&.first&.genre_name %>
 </div>
 
 <div>
-  製作者：<%= @content.creator.first.creator_name if @content.creator.first.present? %>
+  製作者：<%= @content.creator&.first&.creator_name %>
 </div>
 
 <div>
