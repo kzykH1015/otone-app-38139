@@ -13,6 +13,14 @@
 </div>
 
 <div>
+  ジャンル：<%= @content.genre.first.genre_name if @content.genre.first.present? %>
+</div>
+
+<div>
+  製作者：<%= @content.creator.first.creator_name if @content.creator.first.present? %>
+</div>
+
+<div>
   あらすじ：<%= @content.story_line %>
 </div>
 
