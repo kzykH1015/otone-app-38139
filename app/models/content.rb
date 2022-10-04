@@ -3,4 +3,6 @@ class Content < ApplicationRecord
 
   has_many :content_genre_relations
   has_many :genre, through: :content_genre_relations
+  has_many :content_creator_relations
+  has_many :creator, through: :content_creator_relations
 end
