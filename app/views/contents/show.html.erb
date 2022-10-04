@@ -31,3 +31,7 @@
 <div>
   投稿者：<%= @user.nickname %>
 </div>
+
+<div>
+  <%= link_to "作品の情報を編集する", edit_content_path(params[:id]) %>
+</div>

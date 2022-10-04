@@ -3,6 +3,6 @@ Rails.application.routes.draw do
   
   root "contents#index"
 
-  resources :contents, only: [:index, :new, :create, :show]
+  resources :contents, only: [:index, :new, :create, :show, :edit, :update]
   resources :users, only: :show
 end

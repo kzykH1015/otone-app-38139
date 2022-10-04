@@ -1,5 +1,5 @@
 class ContentsController < ApplicationController
-  before_action :find_content, only: [:show, :edit]
+  before_action :find_content, only: [:show, :edit, :update]
   def index
     @contents = Content.all
   end
@@ -25,6 +25,19 @@ class ContentsController < ApplicationController
   def edit
     content_attributes = @content.attributes
     @content_form = ContentForm.new(content_attributes)
+    @content_form.genre_name = @content.genre&.first&.genre_name
+    @content_form.creator_name = @content.creator&.first&.creator_name
+  end
+  
+  def update
+    @content_form = ContentForm.new(content_form_params)
+
+    if @content_form.valid?
+      @content_form.update(content_form_params, @content)
+      redirect_to root_path
+    else
+      render :edit
+    end
   end
 
   private
