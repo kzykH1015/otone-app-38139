@@ -8,5 +8,5 @@ class CreatorCategory < ActiveHash::Base
     { id: 6, name: '俳優・声優' }
   ]
   include ActiveHash::Associations
-  has_many :content
+  # has_many :content
 end

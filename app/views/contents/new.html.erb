@@ -24,9 +24,16 @@
 
     <div>
       <div>
-        <label class="form-wrap">制作者</label>
+        <%# <label class="form-wrap">制作者</label> %>
       </div>
-      <%= f.collection_select(:creator_id, CreatorCategory.all, :id, :name, {include_blank: "---"}, {class:"select-box", id:"content-category"}) %>
+      <%#= f.collection_select(:creator_id, CreatorCategory.all, :id, :name, {include_blank: "---"}, {class:"select-box", id:"content-category"}) %>
+    </div>
+
+    <div class="tag-field">
+      <div>
+        <label class="form-wrap">製作者</label>
+      </div>
+      <%= f.text_field :creator_name %>
     </div>
 
     <div>
