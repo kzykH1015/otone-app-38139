@@ -1,6 +1,6 @@
 <div class="new-content-main">
 <div class="content-new-header">作品新規投稿</div>
-  <%= form_with model: @content, url: contents_path, method: :post, class:"new-content-form", local: true do |f| %>
+  <%= form_with model: @content_form, url: contents_path, method: :post, class:"new-content-form", local: true do |f| %>
     <div>
       <div>
         <label class="form-wrap">タイトル</label>

@@ -4,12 +4,13 @@ class ContentsController < ApplicationController
   end
 
   def new
-    @content = Content.new
+    @content_form = ContentForm.new
   end
 
   def create
-    @content = Content.new(content_params)
-    if @content.save
+    @content_form = ContentForm.new(content_form_params)
+    if @content_form.valid?
+      @content_form.save
       redirect_to root_path
     else
       render :new
@@ -23,7 +24,7 @@ class ContentsController < ApplicationController
 
   private
 
-  def content_params
-    params.require(:content).permit(:title, :category_id, :story_line, :release_date).merge(user_id: current_user.id)
+  def content_form_params
+    params.require(:content_form).permit(:title, :category_id, :story_line, :release_date).merge(user_id: current_user.id)
   end
 end
