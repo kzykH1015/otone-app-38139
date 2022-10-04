@@ -1,0 +1,25 @@
+<h1>作品詳細ページ</h1>
+<div class="top-return">
+  <%= link_to root_path, class:"top-page-return" do %>
+    <div class="top-re">トップページへ</div>
+  <% end %>
+</div>
+<div>
+  タイトル：<%= @content.title %>
+</div>
+
+<div>
+  カテゴリー：<%= Category.find(@content.category_id).name %>
+</div>
+
+<div>
+  あらすじ：<%= @content.story_line %>
+</div>
+
+<div>
+  発売日：<%= @content.release_date %>
+</div><br>
+
+<div>
+  投稿者：<%= @user.nickname %>
+</div>
