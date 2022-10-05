@@ -29,7 +29,7 @@
 </div><br>
 
 <div>
-  投稿者：<%= @user.nickname %>
+  投稿者：<%= link_to @user.nickname, user_path(@user.id) %>
 </div>
 
 <% if @content.liked?(current_user) %>

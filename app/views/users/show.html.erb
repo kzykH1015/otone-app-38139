@@ -38,4 +38,21 @@
       <%= link_to "ユーザー編集", edit_user_registration_path, method: :get %>
     <% end %>
   </div>
+
+  <div class="right-under">
+    <div class="contents-list">
+      <% if @contents.exists? %>
+        <% @contents.each do |content| %>
+          <div class="content-wrap">
+            <div class="content-title">
+              <%= link_to content.title, content_path(content.id) %>
+            </div>
+            <div class="content-category">
+              <%= Category.find(content.category_id).name %>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
 </div>
