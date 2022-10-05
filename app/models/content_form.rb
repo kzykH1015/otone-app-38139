@@ -40,8 +40,6 @@ class ContentForm
 
     genre.save if genre_name.present?
     creator.save if creator_name.present?
-    
-
 
     content.update(params)
 

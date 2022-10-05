@@ -28,7 +28,7 @@ class ContentsController < ApplicationController
     @content_form.genre_name = @content.genre&.first&.genre_name
     @content_form.creator_name = @content.creator&.first&.creator_name
   end
-  
+
   def update
     @content_form = ContentForm.new(content_form_params)
 
@@ -41,8 +41,10 @@ class ContentsController < ApplicationController
   end
 
   private
+
   def content_form_params
-    params.require(:content_form).permit(:title, :category_id, :story_line, :release_date, :genre_name, :creator_name).merge(user_id: current_user.id)
+    params.require(:content_form).permit(:title, :category_id, :story_line, :release_date, :genre_name,
+                                         :creator_name).merge(user_id: current_user.id)
   end
 
   def find_content

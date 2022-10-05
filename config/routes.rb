@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'follow_relations/followings'
+  get 'follow_relations/followers'
   devise_for :users
   
   root "contents#index"
