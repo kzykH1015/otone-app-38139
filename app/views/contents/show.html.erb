@@ -34,7 +34,7 @@
 
 <% if @content.liked?(current_user) %>
   <%= link_to content_like_path(@content.id), method: :delete, class:"like-link" do%>
-    <span class="like-icon", style="color:red;">❤︎</span>
+    <span class="liked-icon", style="color:red;">❤︎</span>
   <% end %>
 <% else %>
   <%= link_to content_likes_path(@content.id), method: :post, class:"like-link" do%>
