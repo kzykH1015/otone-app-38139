@@ -32,9 +32,15 @@
   投稿者：<%= @user.nickname %>
 </div>
 
-<div class="like-star">
-  ★０
-</div>
+<% if @content.liked?(current_user) %>
+  <%= link_to content_like_path(@content.id), method: :delete, class:"like-link" do%>
+    <span class="like-icon", style="color:red;">❤︎</span>
+  <% end %>
+<% else %>
+  <%= link_to content_likes_path(@content.id), method: :post, class:"like-link" do%>
+    <span class="like-icon", style="color:black;">❤︎</span>
+  <% end %>
+<% end %>
 
 <div>
   <%= link_to "作品の情報を編集する", edit_content_path(params[:id]) %>

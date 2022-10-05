@@ -1,13 +1,8 @@
-.like-star {
-  font-size: 20px;
-  color: yellow;
-  background-color: rgb(167, 167, 167);
-  width: 50px;
+.like-icon {
+  font-size: 25px;
+  text-decoration: none;
 }
 
-.like-star-index {
-  font-size: 15px;
-  color: yellow;
-  background-color: rgb(167, 167, 167);
-  width: 50px;
+.like-link {
+  text-decoration: none;
 }
