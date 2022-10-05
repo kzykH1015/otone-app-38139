@@ -48,8 +48,8 @@ ActiveRecord::Schema.define(version: 2022_10_05_114625) do
   end
 
   create_table "follow_relations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "follwer_id", null: false
-    t.integer "follwed_id", null: false
+    t.integer "follower_id", null: false
+    t.integer "followed_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
