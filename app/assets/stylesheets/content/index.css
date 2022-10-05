@@ -73,8 +73,13 @@
 /* right-upの中身 */
 
 /* right-under 中身 */
+.contents-list {
+  display: flex;
+}
 
-
+.content-wrap {
+  margin:0 5px 0 5px;
+}
 
 
 

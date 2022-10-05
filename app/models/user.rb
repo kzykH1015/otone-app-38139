@@ -9,4 +9,6 @@ class User < ApplicationRecord
     :password
     :self_introduction
   end
+
+  has_many :likes, dependent: :destroy
 end
