@@ -1,1 +1,17 @@
 <h1>作品オススメページ</h1>
+<div>
+  オススメする作品：<%= @content.title %>
+</div>
+<div>
+  オススメするユーザー：
+</div>
+
+<div id="user-lists">
+  ユーザーリスト
+</div>
+
+<ul class="show-lists hidden", id="pull-down">
+  <% @users.each do |user| %>
+    <li id="list-child"><%= user.nickname %></li>
+  <% end %>
+</ul>
