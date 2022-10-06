@@ -29,16 +29,16 @@
 </div><br>
 
 <div>
-  投稿者：<%= @user.nickname %>
+  投稿者：<%= link_to @user.nickname, user_path(@user.id) %>
 </div>
 
 <% if @content.liked?(current_user) %>
   <%= link_to content_like_path(@content.id), method: :delete, class:"like-link" do%>
-    <span class="liked-icon", style="color:red;">❤︎</span>
+    <span class="liked-icon", style="color:red;">❤︎</span><%= @content.likes.count %>
   <% end %>
 <% else %>
   <%= link_to content_likes_path(@content.id), method: :post, class:"like-link" do%>
-    <span class="like-icon", style="color:black;">❤︎</span>
+    <span class="like-icon", style="color:black;">❤︎</span><%= @content.likes.count %>
   <% end %>
 <% end %>
 
