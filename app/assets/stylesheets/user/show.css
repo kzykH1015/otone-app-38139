@@ -5,3 +5,14 @@
   grid-template-columns: 200px 1fr;
   grid-template-rows: 50px 1fr;
 }
+
+.follow-star {
+  font-size: 20px;
+  color: blue;
+  text-decoration: none;
+}
+.no-follow-star {
+  font-size: 17px;
+  color: black;
+  text-decoration: none;
+}
