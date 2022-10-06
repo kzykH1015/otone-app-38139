@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   resources :contents, only: [:index, :new, :create, :show, :edit, :update] do
     resources :likes, only: [:create, :destroy]
+    resources :recommends, only: [:new, :create, :destroy]
   end
   resources :users, only: :show do
     resource :follow_relations, only: [:create, :destroy]

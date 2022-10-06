@@ -29,4 +29,7 @@ class User < ApplicationRecord
   def following?(user)
     followings.include?(user)
   end
+
+  has_many :to_recommends, class_name:'Recommend',foreign_key: 'recommended_id', dependent: :destroy 
+  has_many :for_recommends, class_name:'Recommend',foreign_key: 'recommender_id', dependent: :destroy 
 end
