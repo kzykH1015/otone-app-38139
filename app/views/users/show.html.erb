@@ -44,6 +44,10 @@
       <%= link_to "☆", user_follow_relations_path(@user.id), method: :post, class:"no-follow-star" %>
       <%= @user.followers.count %>
     <% end %>
+
+    <div>
+      <%= link_to "recommendする", new_user_recommend_path(params[:id]) %>
+    </div>
   </div>
 
   <div class="right-under">
@@ -62,6 +66,17 @@
       <% end %>
     </div>
 
+    <div>オススメされたリスト
+      <div class="recommends-list">
+        <% if @recommends.exists? %>
+          <% @recommends.each do |rec| %>
+            <%= link_to Content.find(rec.content_id).title, content_path(rec.content_id) %>
+            <%= link_to User.find(rec.recommender_id).nickname, user_path(rec.recommender_id) %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+
     <div class="top-return">
       <%= link_to root_path, class:"top-page-return" do %>
         <div class="top-re">トップページへ</div>
@@ -69,4 +84,3 @@
     </div>
   </div>
 </div>
-

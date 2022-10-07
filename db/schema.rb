@@ -70,12 +70,11 @@ ActiveRecord::Schema.define(version: 2022_10_06_061015) do
   end
 
   create_table "recommends", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "content_id", null: false
+    t.integer "content_id", null: false
     t.integer "recommended_id", null: false
     t.integer "recommender_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["content_id"], name: "index_recommends_on_content_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

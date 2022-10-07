@@ -1,17 +1,29 @@
 <h1>作品オススメページ</h1>
-<div>
-  オススメする作品：<%= @content.title %>
-</div>
-<div>
-  オススメするユーザー：
-</div>
+<%= form_with model:@recommend, url: user_recommends_path(current_user.id), method: :post, local: true do |f| %>
+  <div>
+    オススメするユーザー：<%= @user.nickname %>
+    <%= f.text_area :recommended_id, value:"#{@user.id}" %>
+    <%= f.text_area :recommender_id, value:"#{current_user.id}" %>
+    <%= f.number_field :content_id, value:1 %>
 
-<div id="user-lists">
-  ユーザーリスト
-</div>
+  </div>
+  <div>
+    オススメする作品：<span id="select-content-title">選択してください</span>
+  </div>
 
-<ul class="show-lists hidden", id="pull-down">
-  <% @users.each do |user| %>
-    <li id="list-child"><%= user.nickname %></li>
-  <% end %>
-</ul>
+  <div id="content-lists">
+    作品リスト
+  </div>
+
+  <ul class="show-lists hidden", id="pull-down">
+    <div class="select-list">
+      <% @contents.each do |content| %>
+        <div>
+          <li class="list-child"><%= content.title %></li>
+        </div>
+      <% end %>
+    <div>
+  </ul>
+  <%= f.submit "RECOMMEND" %>
+<% end %>
+<%# <%= link_to "recommend", user_recommends_path(params[:user_id]), method: :post %>
