@@ -20,6 +20,8 @@ class ContentsController < ApplicationController
 
   def show
     @user = User.find(@content.user_id)
+    @comments = Comment.all
+    @comment = Comment.new
   end
 
   def edit

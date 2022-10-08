@@ -45,3 +45,28 @@
 <div>
   <%= link_to "作品の情報を編集する", edit_content_path(params[:id]) %>
 </div>
+
+<div id="comments">
+  <h4>コメント一覧</h4>
+  <% @content.comments.each do |comment| %>
+    <div>
+      <p>
+        <%= comment.user.nickname %>: <%= comment.comment_text %> 
+        <% if comment.user.id == current_user.id %>
+          <%= link_to "削除", comment_path(comment.id), method: :delete %>
+        <% end %>
+      </p>
+    </div>
+  <% end%>
+</div>
+
+<div>
+  <% if user_signed_in? %>
+    <%= form_with model: [@content, @comment], url: content_comments_path(@content.id), method: :post, id:"comment-form" do |f| %>
+      <%= f.text_area :comment_text %>
+      <div>
+        <%= f.submit "コメントする" %>
+      </div>
+    <% end %>
+  <% end %>
+</div>
