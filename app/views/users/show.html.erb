@@ -16,7 +16,6 @@
   </div>
 </div>
 
-
 <div class="user-show-grid">
   <div class="left-up">ユーザー情報</div>
   <div class="right-up">作品一覧
@@ -24,7 +23,7 @@
       <div>作品投稿</div>
     <% end %>
   </div>
-  
+
   <div class="left-under">
     <% if user_signed_in? %>
       <div class="user-info">
@@ -45,6 +44,12 @@
       <%= link_to "☆", user_follow_relations_path(@user.id), method: :post, class:"no-follow-star" %>
       <%= @user.followers.count %>
     <% end %>
+
+    <% if @user.id != current_user.id %>
+      <div>
+        <%= link_to "recommendする", new_user_recommend_path(params[:id]) %>
+      </div>
+    <% end %>
   </div>
 
   <div class="right-under">
@@ -60,6 +65,26 @@
             </div>
           </div>
         <% end %>
+      <% end %>
+    </div>
+
+    <div>オススメされたリスト
+      <div class="recommends-list">
+        <% if @recommends.exists? %>
+          <% @recommends.each do |rec| %>
+            <%= link_to Content.find(rec.content_id).title, content_path(rec.content_id) %>
+            <%= link_to User.find(rec.recommender_id).nickname, user_path(rec.recommender_id) %>
+            <% if rec.recommender_id == current_user.id %>
+              <%= link_to "レコメンドの削除", recommend_path(rec.id), method: :delete %>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="top-return">
+      <%= link_to root_path, class:"top-page-return" do %>
+        <div class="top-re">トップページへ</div>
       <% end %>
     </div>
   </div>

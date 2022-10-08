@@ -10,5 +10,8 @@ Rails.application.routes.draw do
     resource :follow_relations, only: [:create, :destroy]
     get 'followings' => 'follow_relations#followings', as: 'followings'
     get 'followers' => 'follow_relations#followers', as: 'followers'
+
+    resources :recommends, only: [:new, :create]
   end
+  resources :recommends, only: :destroy
 end
