@@ -20,6 +20,7 @@ if(location.pathname.match(/\/contents\/\d/)){
       const html = `
       <div>
         <p>${data.user.nickname}: ${data.comment.comment_text}</p>
+        
       </div>`
       const comments = document.getElementById("comments");
       comments.insertAdjacentHTML('beforeend', html);
