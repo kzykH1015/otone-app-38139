@@ -17,3 +17,6 @@
   margin: 0 5px;
   background-color: antiquewhite;
 }
+.hyde {
+  display: none;
+}

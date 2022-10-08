@@ -45,9 +45,11 @@
       <%= @user.followers.count %>
     <% end %>
 
-    <div>
-      <%= link_to "recommendする", new_user_recommend_path(params[:id]) %>
-    </div>
+    <% if @user.id != current_user.id %>
+      <div>
+        <%= link_to "recommendする", new_user_recommend_path(params[:id]) %>
+      </div>
+    <% end %>
   </div>
 
   <div class="right-under">

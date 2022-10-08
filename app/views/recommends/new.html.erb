@@ -2,10 +2,13 @@
 <%= form_with model:@recommend, url: user_recommends_path(current_user.id), method: :post, local: true do |f| %>
   <div>
     オススメするユーザー：<%= @user.nickname %>
-    <%= f.text_area :recommended_id, value:"#{@user.id}" %>
-    <%= f.text_area :recommender_id, value:"#{current_user.id}" %>
-    <%= f.number_field :content_id, value:1 %>
-
+    <div class="hyde">
+      <%= f.text_field :recommended_id, value:"#{@user.id}" %>
+      <%= f.text_field :recommender_id, value:"#{current_user.id}" %>
+    </div>
+    <div>
+      <%= f.text_field :content_id, placeholder: "IDを入力してください", id:"hidden-id" %>
+    </div>
   </div>
   <div>
     オススメする作品：<span id="select-content-title">選択してください</span>
@@ -19,11 +22,20 @@
     <div class="select-list">
       <% @contents.each do |content| %>
         <div>
-          <li class="list-child"><%= content.title %></li>
+          <li class="list-child">
+            タイトル：<%= content.title %>　ID：<%= content.id%>
+          </li>
+          <li class="select-id-child">
+          </li>
         </div>
       <% end %>
     <div>
   </ul>
   <%= f.submit "RECOMMEND" %>
 <% end %>
-<%# <%= link_to "recommend", user_recommends_path(params[:user_id]), method: :post %>
+
+<div class="top-return">
+  <%= link_to root_path, class:"top-page-return" do %>
+    <div class="top-re">トップページへ</div>
+  <% end %>
+</div>
