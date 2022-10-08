@@ -74,6 +74,9 @@
           <% @recommends.each do |rec| %>
             <%= link_to Content.find(rec.content_id).title, content_path(rec.content_id) %>
             <%= link_to User.find(rec.recommender_id).nickname, user_path(rec.recommender_id) %>
+            <% if rec.recommender_id == current_user.id %>
+              <%= link_to "レコメンドの削除", recommend_path(rec.id), method: :delete %>
+            <% end %>
           <% end %>
         <% end %>
       </div>

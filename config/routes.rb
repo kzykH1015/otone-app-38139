@@ -13,10 +13,5 @@ Rails.application.routes.draw do
 
     resources :recommends, only: [:new, :create]
   end
-
-  # resources :user, only: :show do
-  #   resources :content, only: :show do
-  #     resources :recommends, only: :create
-  #   end
-  # end
+  resources :recommends, only: :destroy
 end

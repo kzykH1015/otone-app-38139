@@ -12,6 +12,9 @@ class RecommendsController < ApplicationController
   end
 
   def destroy
+    @recommend = Recommend.find(params[:id])
+    @recommend.destroy
+    redirect_to root_path
   end
 
   private
