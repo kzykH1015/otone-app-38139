@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   root "contents#index"
 
   resources :contents, only: [:index, :new, :create, :show, :edit, :update] do
+    resources :comment, only: [:create, :destroy]
     resources :likes, only: [:create, :destroy]
   end
   resources :users, only: :show do

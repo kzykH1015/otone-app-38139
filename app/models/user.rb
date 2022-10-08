@@ -17,6 +17,11 @@ class User < ApplicationRecord
 
   has_many :followings, through: :follow_relations, source: :followed
   has_many :followers, through: :reverse_follow_relations, source: :follower
+  
+  has_many :recommends, class_name:'Recommend',foreign_key: 'recommended_id', dependent: :destroy 
+  has_many :for_recommends, class_name:'Recommend',foreign_key: 'recommender_id', dependent: :destroy 
+
+  has_many :comments, dependent: :destroy
 
   def follow(user_id)
     follow_relations.create(followed_id: user_id)
@@ -29,9 +34,6 @@ class User < ApplicationRecord
   def following?(user)
     followings.include?(user)
   end
-
-  has_many :recommends, class_name:'Recommend',foreign_key: 'recommended_id', dependent: :destroy 
-  has_many :for_recommends, class_name:'Recommend',foreign_key: 'recommender_id', dependent: :destroy 
 
   def recommendation(user_id)
     recommends.create(recommender_id: user_id)
