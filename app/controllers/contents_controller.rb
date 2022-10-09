@@ -49,6 +49,13 @@ class ContentsController < ApplicationController
     render json: { keyword: genre }
   end
 
+  def search_creator
+    return nil if params[:keyword] == ''
+
+    creator = Creator.where(['creator_name LIKE ?', "%#{params[:keyword]}%"])
+    render json: { keyword: creator }
+  end
+
   private
 
   def content_form_params

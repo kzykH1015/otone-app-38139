@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     resources :likes, only: [:create, :destroy]
     collection do
       get 'search_genre'
+      get 'search_creator'
     end
   end
   resources :users, only: :show do
