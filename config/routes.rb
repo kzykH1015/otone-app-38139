@@ -6,6 +6,9 @@ Rails.application.routes.draw do
   resources :contents, only: [:index, :new, :create, :show, :edit, :update] do
     resources :comments, only: :create
     resources :likes, only: [:create, :destroy]
+    collection do
+      get 'search_genre'
+    end
   end
   resources :users, only: :show do
     resource :follow_relations, only: [:create, :destroy]
