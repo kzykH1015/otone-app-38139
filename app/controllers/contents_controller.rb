@@ -42,6 +42,13 @@ class ContentsController < ApplicationController
     end
   end
 
+  def search_genre
+    return nil if params[:keyword] == ''
+
+    genre = Genre.where(['genre_name LIKE ?', "%#{params[:keyword]}%"])
+    render json: { keyword: genre }
+  end
+
   private
 
   def content_form_params

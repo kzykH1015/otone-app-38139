@@ -19,14 +19,15 @@
       <div>
         <label class="form-wrap">ジャンル</label>
       </div>
-      <%= f.text_field :genre_name %>
+      <%= f.text_field :genre_name, id:"genre-name"%>
     </div>
+    <div id="genre-search-result"></div>
 
     <div class="tag-field">
       <div>
         <label class="form-wrap">製作者</label>
       </div>
-      <%= f.text_field :creator_name %>
+      <%= f.text_field :creator_name, id:"creator-name" %>
     </div>
 
     <div>
