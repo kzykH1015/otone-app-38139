@@ -1,8 +1,21 @@
 <h1>作品検索画面</h1>
 
 <%= search_form_for @q, url: search_content_contents_path do |f| %>
-  <%= f.label :title_cont, "作品名" %>
-  <%= f.text_field :title_cont, placeholder: "作品名" %>
+  <div>
+    <%= f.label :title_cont, "作品名" %>
+    <%= f.text_field :title_cont, placeholder: "作品名を入力" %>
+  </div>
+
+  <div>
+    <%= f.label :category_id_in, "カテゴリー" %>
+    <%= f.collection_check_boxes(:category_id_in, Category.all, :id, :name, {include_blank: "---"} ) %>
+  </div>
+
+  <div>
+    <%= f.label :release_date_gteq, "発売日・放送日" %><br>
+    <%= f.date_field :release_date_gteq %>〜
+    <%= f.date_field :release_date_lteq %>
+  </div>
 
   <%= f.submit "検索" %>
 <% end %>
@@ -10,3 +23,9 @@
 <% @contents.each do |content| %>
   <%= content.title %>
 <% end %>
+
+<div class="top-return">
+  <%= link_to root_path, class:"top-page-return" do %>
+    <div class="top-re">トップページへ</div>
+  <% end %>
+</div>
