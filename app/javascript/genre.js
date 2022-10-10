@@ -1,7 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
   const genreNameInput = document.getElementById("genre-name")
   if (genreNameInput){
-    console.log("読み込み")
     genreNameInput.addEventListener("input", () => {
       const keyword = document.getElementById("genre-name").value;
       const XHR = new XMLHttpRequest();

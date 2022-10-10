@@ -36,7 +36,7 @@ class ContentsController < ApplicationController
 
     if @content_form.valid?
       @content_form.update(content_form_params, @content)
-      redirect_to root_path
+      redirect_to content_path(params[:id])
     else
       render :edit
     end
