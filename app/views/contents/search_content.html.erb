@@ -2,8 +2,8 @@
 
 <%= search_form_for @q, url: search_content_contents_path do |f| %>
   <div>
-    <%= f.label :title_cont, "作品名" %>
-    <%= f.text_field :title_cont, placeholder: "作品名を入力" %>
+    <%= f.label :title, "作品名" %>
+    <%= f.text_field :title, placeholder: "作品名を入力", value: params[:q]&.dig(:title) %>
   </div>
 
   <div>
