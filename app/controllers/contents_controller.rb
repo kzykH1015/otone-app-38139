@@ -36,7 +36,7 @@ class ContentsController < ApplicationController
 
     if @content_form.valid?
       @content_form.update(content_form_params, @content)
-      redirect_to root_path
+      redirect_to content_path(params[:id])
     else
       render :edit
     end
@@ -47,6 +47,13 @@ class ContentsController < ApplicationController
 
     genre = Genre.where(['genre_name LIKE ?', "%#{params[:keyword]}%"])
     render json: { keyword: genre }
+  end
+
+  def search_creator
+    return nil if params[:keyword] == ''
+
+    creator = Creator.where(['creator_name LIKE ?', "%#{params[:keyword]}%"])
+    render json: { keyword: creator }
   end
 
   private
