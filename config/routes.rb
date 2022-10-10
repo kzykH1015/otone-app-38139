@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     collection do
       get 'search_genre'
       get 'search_creator'
+      get 'search_content'
     end
   end
   resources :users, only: :show do

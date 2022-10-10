@@ -42,6 +42,11 @@ class ContentsController < ApplicationController
     end
   end
 
+  def search_content
+    @q = Content.ransack(params[:q])
+    @contents = @q.result
+  end
+
   def search_genre
     return nil if params[:keyword] == ''
 
