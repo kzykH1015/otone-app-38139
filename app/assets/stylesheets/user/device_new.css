@@ -1,0 +1,13 @@
+.move-btn {
+  text-decoration: none;
+  font-size: 15px;
+  margin: 10px 5px;
+  padding: 3px;
+  color: black;
+  font-weight: 600;
+  border: 1px solid black;
+  display: inline-block;
+}
+.move-btn:hover {
+  background-color: lightgray;
+}
