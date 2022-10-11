@@ -1,91 +1,93 @@
-<div class="index-header">
-  <h1>ユーザー詳細画面</h1>
-  <div class="user-login-menu">
-    <% if user_signed_in? %>
-      <%= link_to destroy_user_session_path, method: :delete, class:"user-btn" do %>
-        <div>ログアウト</div>
-      <% end %>
-    <% else %>
-      <%= link_to new_user_session_path, class:"user-btn" do %>
-        <div>ログイン</div>
-      <% end %>
-      <%= link_to new_user_registration_path, class:"user-btn" do %>
-        <div>新規登録</div>
-      <% end %>
-    <% end %>
-  </div>
-</div>
-
 <div class="user-show-grid">
   <div class="left-up">ユーザー情報</div>
-  <div class="right-up">作品一覧
-    <%= link_to new_content_path, class:"new-content-btn" do %>
-      <div>作品投稿</div>
-    <% end %>
+
+  <div class="show-up">
+    <span>作品一覧</span>
+    <div>
+    <%= link_to "作品検索", search_content_contents_path, class:"content-search-btn" %>
+    <%= link_to "作品投稿", new_content_path, class:"new-content-btn" %>
+    <%= link_to  "トップページへ", root_path, class:"top-return" %>
+    </div>
   </div>
 
   <div class="left-under">
-    <% if user_signed_in? %>
-      <div class="user-info">
-        <%= @user.nickname %>
-      </div>
-      <div>
+    <div class="user-info">
+      <span>【ニックネーム】</span>
+      <%= @user.nickname %>
+    </div>
+    <div class="user-info">
+      <span>【自己紹介】</span><br>
       <%= @user.self_introduction %>
-      </div>
-    <% end %>
-    <% if @user.id == current_user.id %>
-      <%= link_to "ユーザー編集", edit_user_registration_path, method: :get %>
-    <% end %>
-
-    <% if current_user.following?(@user) %>
-      <%= link_to "★", user_follow_relations_path(@user.id), method: :delete, class:"follow-star" %>
-      <%= @user.followers.count %>
-    <% else %>
-      <%= link_to "☆", user_follow_relations_path(@user.id), method: :post, class:"no-follow-star" %>
-      <%= @user.followers.count %>
-    <% end %>
+    </div>
 
     <% if @user.id != current_user.id %>
+      <% if current_user.following?(@user) %>
+        <%= link_to "★", user_follow_relations_path(@user.id), method: :delete, class:"follow-star" %>
+        <%= @user.followers.count %>
+      <% else %>
+        <%= link_to "☆", user_follow_relations_path(@user.id), method: :post, class:"no-follow-star" %>
+        <%= @user.followers.count %>
+      <% end %>
       <div>
-        <%= link_to "recommendする", new_user_recommend_path(params[:id]) %>
+        <%= link_to "recommendする", new_user_recommend_path(params[:id]), class:"recommend-btn" %>
       </div>
+    <% end %>
+
+    <% if @user.id == current_user.id %>
+      <%= link_to "情報を編集する", edit_user_registration_path, method: :get, class:"user-edit-btn" %>
     <% end %>
   </div>
 
   <div class="right-under">
+
     <div class="contents-list">
       <% if @contents.exists? %>
         <% @contents.each do |content| %>
           <div class="content-wrap">
-            <div class="content-title">
-              <%= link_to content.title, content_path(content.id) %>
-            </div>
+            <%= link_to content.title, content_path(content.id), class:"content-title" %>
             <div class="content-category">
-              <%= Category.find(content.category_id).name %>
+              カテゴリー:<%= Category.find(content.category_id).name %>
             </div>
           </div>
         <% end %>
       <% end %>
     </div>
 
-    <div>オススメされたリスト
+    <div class="recommends-container">
+      <div class="recommends-logo">オススメされたリスト</div>
       <div class="recommends-list">
         <% if @recommends.exists? %>
           <% @recommends.each do |rec| %>
-            <%= link_to Content.find(rec.content_id).title, content_path(rec.content_id) %>
-            <%= link_to User.find(rec.recommender_id).nickname, user_path(rec.recommender_id) %>
-            <% if rec.recommender_id == current_user.id %>
-              <%= link_to "レコメンドの削除", recommend_path(rec.id), method: :delete %>
-            <% end %>
+            <div class="content-wrap">
+              <%= link_to Content.find(rec.content_id).title, content_path(rec.content_id), class:"content-title" %>
+              <div>
+                ユーザー:<%= link_to User.find(rec.recommender_id).nickname, user_path(rec.recommender_id), class:"mini-user-link" %>
+              </div>
+              <% if rec.recommender_id == current_user.id %>
+                <%= link_to "レコメンドの削除", recommend_path(rec.id), method: :delete %>
+              <% end %>
+            </div>
           <% end %>
         <% end %>
       </div>
     </div>
 
-    <div class="top-return">
-      <%= link_to root_path, class:"top-page-return" do %>
-        <div class="top-re">トップページへ</div>
+    <div class="recommends-logo" >お気に入り作品</div>
+    <div class="recommends-list">
+      <% @likes.each do |like| %>
+        <div class="content-wrap">
+          <%= link_to Content.find(like.content_id).title, content_path(like.content_id), class:"content-title" %>
+        </div>
       <% end %>
     </div>
+    <div class="recommends-logo" >お気に入りユーザー</div>
+    <div class="recommends-list">
+      <% @followes.each do |follow| %>
+        <div class="content-wrap">
+          ユーザー:<%= link_to User.find(follow.followed_id).nickname, user_path(follow.followed_id), class:"mini-user-link" %>
+        </div>
+      <% end %>
+    </div>
+
   </div>
 </div>

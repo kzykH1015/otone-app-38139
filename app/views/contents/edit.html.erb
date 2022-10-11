@@ -1,57 +1,58 @@
 <div class="new-content-main">
-<div class="content-new-header">作品情報編集</div>
+  <div class="content-new-header">作品情報編集</div>
+
   <%= form_with model: @content_form, url: content_path(@content.id), method: :patch, class:"new-content-form", local: true do |f| %>
-    <div>
+    <div class="form-field">
       <div>
         <label class="form-wrap">タイトル</label>
       </div>
-      <%= f.text_field :title %>
+      <%= f.text_field :title, class:"form-field" %>
     </div>
 
-    <div>
+    <div class="form-field">
       <div>
         <label class="form-wrap">カテゴリー</label>
       </div>
       <%= f.collection_select(:category_id, Category.all, :id, :name, {include_blank: "---"}, {class:"select-box", id:"content-category"}) %>
     </div>
 
-    <div class="tag-field">
+    <div class="form-field">
       <div>
         <label class="form-wrap">ジャンル</label>
       </div>
-      <%= f.text_field :genre_name, id:"genre-name"%>
+      <%= f.text_field :genre_name, class:"form-field", id:"genre-name"%>
     </div>
-    <div id="genre-search-result"></div>
+    <div class="search-result", id="genre-search-result"></div>
 
-    <div class="tag-field">
+    <div class="form-field">
       <div>
         <label class="form-wrap">製作者</label>
       </div>
-      <%= f.text_field :creator_name, id:"creator-name" %>
+      <%= f.text_field :creator_name, class:"form-field", id:"creator-name" %>
     </div>
-    <div id="creator-search-result"></div>
+    <div class="search-result", id="creator-search-result"></div>
 
-    <div>
+    <div class="form-field">
       <div>
         <label class="form-wrap">あらすじ</label>
       </div>
-      <%= f.text_area :story_line %>
+      <%= f.text_area :story_line, class:"form-field" %>
     </div>
 
-    <div>
+    <div class="form-field">
       <div>
         <label class="form-wrap">発売日・放送日</label>
       </div>
-      <%= f.date_field :release_date %>
+      <%= f.date_field :release_date, class:"date-field" %>
     </div>
 
     <div class="new-submit">
-      <%= f.submit "投稿する", class:"submit-btn" %>
+      <%= f.submit "修正する", class:"submit-btn" %>
     </div>
+
+    <div class="return-btn">
+      <%= link_to "トップページへ", root_path, class:"top-return" %>
+    </div>
+
   <% end %>
-  <div class="top-return">
-    <%= link_to root_path, class:"top-page-return" do %>
-      <div class="top-re">トップページへ</div>
-    <% end %>
-  </div>
 </div>

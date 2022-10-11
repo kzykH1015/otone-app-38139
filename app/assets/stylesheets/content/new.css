@@ -15,6 +15,10 @@
   grid-area: areaC;
   font-size: 30px;
   font-weight: 700;
+  background-color: aqua;
+  width: 250px;
+  text-align: center;
+  border-radius: 5px;
 }
 /* 新規投稿の大枠 */
 
@@ -25,30 +29,57 @@
 
 .new-submit {
   grid-area: areaB;
+  margin: 10px auto 0;
 }
 
 .submit-btn {
-  width: 100px;
+  color: black;
+  width: 150px;
   height: 40px;
   font-size: 20px;
   font-weight: 800;
-  background-color: antiquewhite;
+  background-color: rgb(88, 255, 255);
+  border-radius: 10px;
+}
+.return-btn {
+  grid-area: areaE;
+  margin-top: 20px;
 }
 
 .top-return {
-  grid-area: areaE;
-  margin: 0 auto;
-  width: 120px;
   height: 30px;
-  font-size: 15px;
-  background-color: azure;
-  border: 1px solid black;
-  border-radius: 10px;
+  color: white;
+  padding: 0 10px;
   text-decoration: none;
-  text-align: center;
   line-height: 30px;
+  font-size: 18px;
+  font-weight: 500;
+  background-color: rgba(47, 47, 255, 0.792);
+  border-radius: 8px;
+}
+.form-field {
+  width: 200px;
+  font-size: 16px;
+  padding: 3px;
+}
+.select-box {
+  font-size: 16px;
+  padding: 3px;
+}
+.date-field {
+  font-size: 16px;
+  padding: 3px;
 }
 
-.form-wrap {
-  
+/* インクリメンタルサーチ */
+.search-result {
+  display: flex;
 }
+.child {
+  background-color: rgb(155, 255, 255);
+  margin: 3px;
+  border-radius: 5px;
+  padding: 3px;
+}
+
+/* インクリメンタルサーチ */

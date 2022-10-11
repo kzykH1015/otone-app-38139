@@ -1,17 +1,17 @@
 <h1>作品オススメページ</h1>
-<%= form_with model:@recommend, url: user_recommends_path(current_user.id), method: :post, local: true do |f| %>
+<%= form_with model:@recommend, url: user_recommends_path(current_user.id), method: :post, class:"recommend-form", local: true do |f| %>
   <div>
     オススメするユーザー：<%= @user.nickname %>
     <div class="hyde">
       <%= f.text_field :recommended_id, value:"#{@user.id}" %>
       <%= f.text_field :recommender_id, value:"#{current_user.id}" %>
     </div>
-    <div>
-      <%= f.text_field :content_id, placeholder: "IDを入力してください", id:"hidden-id" %>
-    </div>
   </div>
   <div>
     オススメする作品：<span id="select-content-title">選択してください</span>
+  </div>
+  <div>
+    作品ID：<%= f.text_field :content_id, placeholder: "作品のIDを入力",class:"form-field", id:"hidden-id" %>
   </div>
 
   <div id="content-lists">
@@ -31,11 +31,9 @@
       <% end %>
     <div>
   </ul>
-  <%= f.submit "RECOMMEND" %>
+  <%= f.submit "RECOMMEND", class:"recommend-btn" %>
 <% end %>
 
-<div class="top-return">
-  <%= link_to root_path, class:"top-page-return" do %>
-    <div class="top-re">トップページへ</div>
-  <% end %>
+<div class="return-btn">
+  <%= link_to "トップページへ", root_path, class:"top-return" %>
 </div>

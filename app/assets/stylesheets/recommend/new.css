@@ -4,6 +4,8 @@
 
 #content-lists {
   width: 100px;
+  margin: 5px 0;
+  border-radius: 5px;
 }
 
 .select-list {
@@ -12,11 +14,23 @@
 .select-list li {
   list-style: none;
 }
+.show-lists {
+  margin: 5px;
+  padding: 5px;
+}
 
 .list-child {
+  height: 20px;
+  font-size: 15px;
+  font-weight: 500;
   margin: 0 5px;
-  background-color: antiquewhite;
+  background-color: rgb(155, 255, 255);
+  padding: 3px;
+  border-radius: 5px;
 }
 .hyde {
   display: none;
+}
+.recommend-form {
+  font-size: 20px;
 }
