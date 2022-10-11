@@ -11,3 +11,6 @@
 .move-btn:hover {
   background-color: lightgray;
 }
+.actions {
+  margin-top: 10px;
+}
