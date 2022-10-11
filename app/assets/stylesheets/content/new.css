@@ -36,19 +36,14 @@
 }
 
 .top-return {
-  grid-area: areaE;
-  margin: 0 auto;
-  width: 120px;
   height: 30px;
-  font-size: 15px;
-  background-color: azure;
-  border: 1px solid black;
-  border-radius: 10px;
+  color: white;
+  padding: 0 10px;
   text-decoration: none;
-  text-align: center;
   line-height: 30px;
-}
-
-.form-wrap {
-  
+  font-size: 18px;
+  font-weight: 500;
+  margin: 0 20px;
+  background-color: rgba(47, 47, 255, 0.792);
+  border-radius: 8px;
 }
