@@ -1,26 +1,32 @@
 <h1>作品検索ページ</h1>
-<%= link_to  "トップページへ", root_path, class:"top-return" %>
 
-<%= search_form_for @q, url: search_content_contents_path do |f| %>
+<%= search_form_for @q, url: search_content_contents_path, class:"search-form" do |f| %>
   <div>
-    <%= f.label :title, "作品名" %>
-    <%= f.text_field :title, placeholder: "作品名を入力", value: params[:q]&.dig(:title) %>
+    <%= f.label :title, "【作品名】" %><br>
+    <%= f.text_field :title, placeholder: "作品名を入力", value: params[:q]&.dig(:title), class:"form-field" %>
   </div>
 
   <div>
-    <%= f.label :category_id_in, "カテゴリー" %>
+    <%= f.label :category_id_in, "【カテゴリー】" %><br>
     <%= f.collection_check_boxes(:category_id_in, Category.all, :id, :name, {include_blank: "---"} ) %>
   </div>
 
   <div>
-    <%= f.label :release_date_gteq, "発売日・放送日" %><br>
-    <%= f.date_field :release_date_gteq %>〜
-    <%= f.date_field :release_date_lteq %>
-  </div>
+    <%= f.label :release_date_gteq, "【発売日・放送日】" %><br>
+    <%= f.date_field :release_date_gteq, class:"date-field" %>〜
+    <%= f.date_field :release_date_lteq, class:"date-field" %>
+  </div><br>
 
-  <%= f.submit "検索" %>
+  <%= f.submit "作品を検索", class:"submit-btn" %>
 <% end %>
 
+<h3>検索結果</h3>
 <% @contents.each do |content| %>
-  <%= content.title %>
+  <div class="content-search-result">
+    <%= link_to content.title, content_path(content.id), class:"content-title" %>
+  </div>
 <% end %>
+
+<div>
+<%= link_to  "トップページへ", root_path, class:"top-return" %>
+</div>
