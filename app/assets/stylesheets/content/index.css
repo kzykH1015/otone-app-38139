@@ -1,13 +1,3 @@
-/* mainに対するcss */
-.content-index-main {
-  width: 100vw;
-  height: 100vh;
-  display: grid;
-  grid-template-columns: 150px 1fr;
-  grid-template-rows: 50px 1fr;
-}
-/* mainに対するcss */
-
 /* indexのheader */
 .index-header {
   display: flex;
@@ -16,72 +6,135 @@
   height: 70px;
   line-height: 50px;
   padding: 10px;
+  background-color: rgba(189, 226, 250, 0.86);
+}
+.app-logo {
+  font-size: 45px;
+  font-weight: 800;
+}
+.logo-t {
+  font-size: 40px;
+  color: blue;
+}
+.sub {
+  margin-left: 5px;
+  font-size: 12px;
+}
+.sub-t {
+  font-size: 11px;
+  color: blue;
 }
 
-.user-login-menu {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 200px;
-}
-/* indexのheader */
-
-/* leftとrightのupとunder */
-.left-up {
-  background-color: aliceblue;
-  font-size: 20px;
-  line-height: 50px;
-  text-align: center;
-}
-
-.left-under {
-  background-color: antiquewhite;
-}
-
-.right-up {
-  background-color: aqua;
-  padding-left: 10px;
-  line-height: 50px;
-  font-size: 25px;
-  letter-spacing: 7px;
-}
-
-.right-under {
-  padding: 5px;
-}
-/* leftとrightのupとunder */
-
-/* left-under 中身の要素 */
-.user-info {
+.user-btn {
   font-size: 20px;
   font-weight: 600;
   text-align: center;
-  margin-top: 10px;
-}
-/* left-under 中身の要素 */
-
-/* right-upの中身 */
-.new-content-btn {
-  display: inline-block;
   text-decoration: none;
-  line-height: 50px;
-  font-size: 20px;
-  height: 47px;
-  background-color: aquamarine;
-  border: 1px solid black;
+  color: blue;
 }
-/* right-upの中身 */
 
-/* right-under 中身 */
+.index-menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 300px;
+}
+
+.user-link {
+  font-size: 20px;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+  color: black;
+  border-radius: 10px;
+}
+.user-link:hover {
+  font-size: 21px;
+  color: darkgrey;
+}
+/* indexのheader */
+
+/* mainに対するcss */
+.content-index-main {
+  display: grid;
+  grid-template-rows: 50px 1fr;
+}
+/* mainに対するcss */
+
+/* upとunder */
+.index-up {
+  height: 50px;
+  background-color: aqua;
+  display: flex;
+  padding: 5px;
+  align-items: center;
+}
+.index-up span {
+  height: 50px;
+  line-height: 50px;
+  margin: 0 10px;
+  font-size: 30px;
+  letter-spacing: 25px;
+  font-weight: bold;
+}
+
+.index-under {
+  padding-top: 20px;
+}
+/* upとunder */
+
+/* upの中身 */
+.content-search-btn {
+  height: 30px;
+  color: white;
+  padding: 0 10px;
+  text-decoration: none;
+  line-height: 30px;
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0 20px;
+  background-color: rgba(47, 47, 255, 0.792);
+  border-radius: 8px;
+}
+.content-search-btn:hover {
+  opacity: 0.7;
+  background-color: blue;
+}
+.new-content-btn {
+  height: 30px;
+  color: whitesmoke;
+  padding: 0 10px;
+  text-decoration: none;
+  line-height: 30px;
+  font-size: 20px;
+  font-weight: 600;
+  background-color: rgba(47, 47, 255, 0.792);
+  border-radius: 8px;
+}
+.new-content-btn:hover {
+  opacity: 0.7;
+  background-color: blue;
+}
+/* upの中身 */
+
+/* under 中身 */
 .contents-list {
   display: flex;
 }
 
 .content-wrap {
-  margin:0 5px 0 5px;
+  margin:5px 10px;
+  padding: 5px;
+  border: 3px double black;
 }
 
-
-
-
-/* right-under 中身 */
+.content-title {
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: 500;
+  color: black;
+  border: 1px solid black;
+  padding: 5px;
+  background-color: aqua;
+}
+/* under 中身 */
