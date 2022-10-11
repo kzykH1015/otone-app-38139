@@ -24,12 +24,12 @@
 }
 
 .follow-star {
-  font-size: 20px;
+  font-size: 25px;
   color: blue;
   text-decoration: none;
 }
 .no-follow-star {
-  font-size: 17px;
+  font-size: 20px;
   color: black;
   text-decoration: none;
 }
@@ -77,6 +77,20 @@
   background-color: rgb(110, 238, 255);
   font-size: 20px;
   font-weight: bold;
+}
+.recommend-btn {
+  color: red;
+  background-color: white;
+  font-weight: bold;
+  border: 1px solid red;
+  border-radius: 10px;
+  text-decoration: none;
+  padding: 5px;
+  margin:10px 3px;
+}
+.recommend-btn:hover {
+  background-color: red;
+  color: white;
 }
 .mini-user-link {
   text-decoration: none;

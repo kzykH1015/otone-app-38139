@@ -29,7 +29,7 @@
         <%= @user.followers.count %>
       <% end %>
       <div>
-        <%= link_to "recommendする", new_user_recommend_path(params[:id]) %>
+        <%= link_to "recommendする", new_user_recommend_path(params[:id]), class:"recommend-btn" %>
       </div>
     <% end %>
 
