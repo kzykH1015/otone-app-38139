@@ -1,4 +1,5 @@
-<h1>作品検索画面</h1>
+<h1>作品検索ページ</h1>
+<%= link_to  "トップページへ", root_path, class:"top-return" %>
 
 <%= search_form_for @q, url: search_content_contents_path do |f| %>
   <div>
@@ -23,9 +24,3 @@
 <% @contents.each do |content| %>
   <%= content.title %>
 <% end %>
-
-<div class="top-return">
-  <%= link_to root_path, class:"top-page-return" do %>
-    <div class="top-re">トップページへ</div>
-  <% end %>
-</div>

@@ -1,72 +1,68 @@
-<h1>作品詳細ページ</h1>
-<div class="top-return">
-  <%= link_to root_path, class:"top-page-return" do %>
-    <div class="top-re">トップページへ</div>
-  <% end %>
-</div>
-<div>
-  タイトル：<%= @content.title %>
-</div>
-
-<div>
-  カテゴリー：<%= Category.find(@content.category_id).name %>
-</div>
-
-<div>
-  ジャンル：<%= @content.genre&.first&.genre_name %>
-</div>
-
-<div>
-  製作者：<%= @content.creator&.first&.creator_name %>
-</div>
-
-<div>
-  あらすじ：<%= @content.story_line %>
-</div>
-
-<div>
-  発売日：<%= @content.release_date %>
-</div><br>
-
-<div>
-  投稿者：<%= link_to @user.nickname, user_path(@user.id) %>
-</div>
-
-<% if @content.liked?(current_user) %>
-  <%= link_to content_like_path(@content.id), method: :delete, class:"like-link" do%>
-    <span class="liked-icon", style="color:red;">❤︎</span><%= @content.likes.count %>
-  <% end %>
-<% else %>
-  <%= link_to content_likes_path(@content.id), method: :post, class:"like-link" do%>
-    <span class="like-icon", style="color:black;">❤︎</span><%= @content.likes.count %>
-  <% end %>
-<% end %>
-
-<div>
-  <%= link_to "作品の情報を編集する", edit_content_path(params[:id]) %>
-</div>
-
-<div id="comments">
-  <h4>コメント一覧</h4>
-  <% @content.comments.each do |comment| %>
+<h1>【<%= @content.title %>】詳細ページ</h1>
+<div class="content-show-grid">
+  <div class="content-info">
     <div>
-      <p>
-        <%= comment.user.nickname %>: <%= comment.comment_text %> 
-        <% if comment.user.id == current_user.id %>
-          <%= link_to "削除", comment_path(comment.id), method: :delete %>
-        <% end %>
-      </p>
+      カテゴリー：<%= Category.find(@content.category_id).name %>
     </div>
-  <% end%>
-</div>
 
-<div>
-  <% if user_signed_in? %>
-    <%= form_with model: [@content, @comment], url: content_comments_path(@content.id), method: :post, id:"comment-form" do |f| %>
-      <%= f.text_area :comment_text %>
-      <div>
-        <%= f.submit "コメントする" %>
-      </div>
+    <div>
+      ジャンル：<%= @content.genre&.first&.genre_name %>
+    </div>
+
+    <div>
+      製作者：<%= @content.creator&.first&.creator_name %>
+    </div>
+
+    <div>
+      あらすじ：<%= @content.story_line %>
+    </div>
+
+    <div>
+      発売日・放送日：<%= @content.release_date %>
+    </div><br>
+
+    <div>
+      投稿者：<%= link_to @user.nickname, user_path(@user.id), class:"mini-user-link" %>
+    </div>
+
+    <% if @content.liked?(current_user) %>
+      <%= link_to content_like_path(@content.id), method: :delete, class:"like-link" do%>
+        <span class="liked-icon", style="color:red;">❤︎</span><%= @content.likes.count %>
+      <% end %>
+    <% else %>
+      <%= link_to content_likes_path(@content.id), method: :post, class:"like-link" do%>
+        <span class="like-icon", style="color:black;">❤︎</span><%= @content.likes.count %>
+      <% end %>
     <% end %>
-  <% end %>
+
+    <div>
+      <%= link_to "作品の情報を編集する", edit_content_path(params[:id]), class:"content-edit-btn" %>
+    </div>
+
+    <%= link_to  "トップページへ", root_path, class:"top-return" %>
+  </div>
+  <div class="comment-container">
+
+    <div>
+    <div id="comments">
+      <h3>コメント一覧</h3>
+      <% @content.comments.each do |comment| %>
+        <div class="comment">
+          <%= comment.user.nickname %>: <%= comment.comment_text %> 
+          <% if comment.user.id == current_user.id %>
+            <%= link_to "削除", comment_path(comment.id), method: :delete, class:"delete-btn" %>
+          <% end %>
+        </div>
+      <% end%>
+    </div>
+      <% if user_signed_in? %>
+        <%= form_with model: [@content, @comment], url: content_comments_path(@content.id), method: :post, id:"comment-form" do |f| %>
+          <%= f.text_area :comment_text, class:"form-field" %>
+          <div>
+            <%= f.submit "コメントする" , class:"submit-btn" %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
 </div>

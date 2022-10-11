@@ -1,6 +1,6 @@
 <div class="new-content-main">
   <div class="content-new-header">作品情報編集</div>
-  
+
   <%= form_with model: @content_form, url: content_path(@content.id), method: :patch, class:"new-content-form", local: true do |f| %>
     <div class="form-field">
       <div>
@@ -47,7 +47,7 @@
     </div>
 
     <div class="new-submit">
-      <%= f.submit "投稿する", class:"submit-btn" %>
+      <%= f.submit "修正する", class:"submit-btn" %>
     </div>
 
     <div class="return-btn">
