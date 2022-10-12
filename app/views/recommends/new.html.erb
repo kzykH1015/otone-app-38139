@@ -1,8 +1,10 @@
 <h1>作品オススメページ</h1>
-<%= form_with model:@recommend, url: user_recommends_path(current_user.id), method: :post, class:"recommend-form", local: true do |f| %>
+<%= form_with model:@recommend, url: user_recommends_path(@user.id), method: :post, class:"recommend-form", local: true do |f| %>
+  <%= render 'shared/error_messages', model: f.object %>
   <div>
     オススメするユーザー：<%= @user.nickname %>
-    <div class="hyde">
+    <%# <div class="hyde"> %>
+    <div>
       <%= f.text_field :recommended_id, value:"#{@user.id}" %>
       <%= f.text_field :recommender_id, value:"#{current_user.id}" %>
     </div>

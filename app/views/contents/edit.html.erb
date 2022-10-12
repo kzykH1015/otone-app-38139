@@ -2,6 +2,7 @@
   <div class="content-new-header">作品情報編集</div>
 
   <%= form_with model: @content_form, url: content_path(@content.id), method: :patch, class:"new-content-form", local: true do |f| %>
+    <%= render 'shared/error_messages', model: f.object %>
     <div class="form-field">
       <div>
         <label class="form-wrap">タイトル</label>
