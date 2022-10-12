@@ -24,19 +24,22 @@
     <div>
       投稿者：<%= link_to @user.nickname, user_path(@user.id), class:"mini-user-link" %>
     </div>
-
-    <% if @content.liked?(current_user) %>
-      <%= link_to content_like_path(@content.id), method: :delete, class:"like-link" do%>
-        <span class="liked-icon", style="color:red;">❤︎</span><%= @content.likes.count %>
-      <% end %>
-    <% else %>
-      <%= link_to content_likes_path(@content.id), method: :post, class:"like-link" do%>
-        <span class="like-icon", style="color:black;">❤︎</span><%= @content.likes.count %>
+    <% if user_signed_in? %>
+      <% if @content.liked?(current_user) %>
+        <%= link_to content_like_path(@content.id), method: :delete, class:"like-link" do%>
+          <span class="liked-icon", style="color:red;">❤︎</span><%= @content.likes.count %>
+        <% end %>
+      <% else %>
+        <%= link_to content_likes_path(@content.id), method: :post, class:"like-link" do%>
+          <span class="like-icon", style="color:black;">❤︎</span><%= @content.likes.count %>
+        <% end %>
       <% end %>
     <% end %>
 
     <div>
-      <%= link_to "作品の情報を編集する", edit_content_path(params[:id]), class:"content-edit-btn" %>
+      <% if user_signed_in? %>
+        <%= link_to "作品の情報を編集する", edit_content_path(params[:id]), class:"content-edit-btn" %>
+      <% end %>
     </div>
 
     <%= link_to  "トップページへ", root_path, class:"top-return" %>
@@ -49,8 +52,10 @@
       <% @content.comments.each do |comment| %>
         <div class="comment">
           <%= comment.user.nickname %>: <%= comment.comment_text %> 
-          <% if comment.user.id == current_user.id %>
-            <%= link_to "削除", comment_path(comment.id), method: :delete, class:"delete-btn" %>
+          <% if user_signed_in? %>
+            <% if comment.user.id == current_user.id %>
+              <%= link_to "削除", comment_path(comment.id), method: :delete, class:"delete-btn" %>
+            <% end %>
           <% end %>
         </div>
       <% end%>
