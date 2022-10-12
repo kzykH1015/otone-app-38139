@@ -13,6 +13,8 @@ class ContentForm
     validates :story_line
     validates :release_date
     validates :user_id
+    validates :genre_name
+    validates :creator_name
   end
 
   def save
