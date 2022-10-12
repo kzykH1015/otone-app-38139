@@ -10,6 +10,8 @@ class ContentForm
   with_options presence: true do
     validates :title
     validates :category_id
+    validates :genre_name
+    validates :creator_name
     validates :story_line
     validates :release_date
     validates :user_id
