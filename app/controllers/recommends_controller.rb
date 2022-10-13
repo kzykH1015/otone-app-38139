@@ -6,7 +6,7 @@ class RecommendsController < ApplicationController
     @contents = Content.all
     @recommend = Recommend.new
   end
-  
+
   def create
     @recommend = Recommend.new(recommend_params)
     if @recommend.save
@@ -15,15 +15,15 @@ class RecommendsController < ApplicationController
       render :new
     end
   end
-  
+
   def destroy
     @recommend = Recommend.find(params[:id])
     @recommend.destroy
     redirect_to user_path(@recommend.recommended_id)
   end
-  
+
   private
-  
+
   def find_item
     @user = User.find(params[:user_id])
     @contents = Content.all
