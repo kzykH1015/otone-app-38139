@@ -5,9 +5,14 @@
       カテゴリー：<%= Category.find(@content.category_id).name %>
     </div>
 
-    <div>
-      ジャンル：<%= @content.genre&.first&.genre_name %>
-    </div>
+    <% if @spoiler.genre_spoiler_id == 1 %>
+      ジャンル...<br>
+      <div class="spoiler-barrier">《!ネタバレ防止システム作動中!》</div>
+    <% else %> 
+      <div>
+        ジャンル：<%= @content.genre&.first&.genre_name %>
+      </div>
+    <% end %>
 
     <div>
       製作者：<%= @content.creator&.first&.creator_name %>

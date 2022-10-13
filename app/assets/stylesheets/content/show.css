@@ -55,3 +55,13 @@ h1 {
   padding: 3px;
   margin-left: 5px;
 }
+.spoiler-barrier {
+  color: red;
+  font-size: 20px;
+  font-weight: bold;
+  border: 5px double black;
+  width: 330px;
+  text-align: center;
+  padding: 3px;
+  margin: 5px;
+}
