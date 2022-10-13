@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: {
+    registrations: "users/registrations"
+  }
+  devise_scope :user do
+    get "spoilers", to: "users/registrations#new_spoiler"
+    post "spoilers", to: "users/registrations#create_spoiler"
+    get "edit_spoilers", to: "users/registrations#edit_spoiler"
+    put "update_spoilers", to: "users/registrations#update_spoiler"
+  end
   
   root "contents#index"
 
