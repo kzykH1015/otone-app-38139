@@ -1,0 +1,46 @@
+<h2>ネタバレ防止設定</h2>
+
+<%= form_for @spoiler do |f| %>
+  <%#= render "devise/shared/error_messages", resource: @address %>
+
+  <div class="form-field">
+    <div>
+      <label class="form-wrap">ジャンル：制限</label>
+    </div>
+    <%= f.collection_select(:genre_spoiler_id, SpoilerSelect.all, :id, :name, {include_blank: "---"}, {class:"select-box", id:"content-category"}) %>
+  </div>
+
+  <div class="form-field">
+    <div>
+      <label class="form-wrap">制作者：制限</label>
+    </div>
+    <%= f.collection_select(:creator_spoiler_id, SpoilerSelect.all, :id, :name, {include_blank: "---"}, {class:"select-box", id:"content-category"}) %>
+  </div>
+
+  <div class="form-field">
+    <div>
+      <label class="form-wrap">あらすじ：制限</label>
+    </div>
+    <%= f.collection_select(:story_line_spoiler_id, SpoilerSelect.all, :id, :name, {include_blank: "---"}, {class:"select-box", id:"content-category"}) %>
+  </div>
+
+  <div class="form-field">
+    <div>
+      <label class="form-wrap">発売日・放送日：制限</label>
+    </div>
+    <%= f.collection_select(:release_date_spoiler_id, SpoilerSelect.all, :id, :name, {include_blank: "---"}, {class:"select-box", id:"content-category"}) %>
+  </div>
+
+  <div class="form-field">
+    <div>
+      <label class="form-wrap">コメント：制限</label>
+    </div>
+    <%= f.collection_select(:comment_spoiler_id, SpoilerSelect.all, :id, :name, {include_blank: "---"}, {class:"select-box", id:"content-category"}) %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Sign up", class:"submit-btn" %>
+  </div>
+<% end %>
+
+<%= render "devise/shared/links" %>

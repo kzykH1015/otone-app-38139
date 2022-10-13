@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_10_08_073447) do
+ActiveRecord::Schema.define(version: 2022_10_13_080439) do
 
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "comment_text", null: false
@@ -87,6 +87,18 @@ ActiveRecord::Schema.define(version: 2022_10_08_073447) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "spoilers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "genre_spoiler_id", null: false
+    t.integer "creator_spoiler_id", null: false
+    t.integer "story_line_spoiler_id", null: false
+    t.integer "release_date_spoiler_id", null: false
+    t.integer "comment_spoiler_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_spoilers_on_user_id"
+  end
+
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "nickname", null: false
     t.string "email", default: "", null: false
@@ -108,4 +120,5 @@ ActiveRecord::Schema.define(version: 2022_10_08_073447) do
   add_foreign_key "contents", "users"
   add_foreign_key "likes", "contents"
   add_foreign_key "likes", "users"
+  add_foreign_key "spoilers", "users"
 end
