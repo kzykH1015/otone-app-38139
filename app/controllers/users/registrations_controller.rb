@@ -31,9 +31,37 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @user.save
     session["devise.regist_data"]["user"].clear
     sign_in(:user, @user)
-    
   end
 
+  
+  
+  # GET /resource/edit
+  def edit
+    @user = User.find(current_user.id)
+  end
+  
+  # PUT /resource
+  def update
+    @user = User.find(current_user.id)
+    @user.update(update_params)
+    unless @user.valid?
+      render :edit and return
+    end
+    @spoiler = Spoiler.find_by(user_id: current_user.id)
+    render :edit_spoiler
+  end
+  
+  def update_spoiler
+    @user = User.find(current_user.id)
+    @spoiler = Spoiler.find_by(user_id: @user.id)
+    @spoiler.update(spoiler_params)
+    unless @spoiler.valid?
+      render :edit_spoiler and return
+    end
+    @spoiler.update(spoiler_params.merge(user_id: current_user.id))
+    redirect_to user_path(current_user.id)
+  end
+  
   private
 
   def spoiler_params
@@ -42,16 +70,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
     )
   end
 
+  def update_params
+    params.require(:user).permit(:nickname, :email, :self_introduction)
+  end
 
-  # GET /resource/edit
-  # def edit
-  #   super
-  # end
-
-  # PUT /resource
-  # def update
-  #   super
-  # end
 
   # DELETE /resource
   # def destroy
@@ -67,7 +89,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  # protected
+  protected
+
+  def update_resource(resource, params)
+    resource.upddate_without_password(params)
+  end
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_up_params

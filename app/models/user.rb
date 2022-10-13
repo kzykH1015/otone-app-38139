@@ -7,7 +7,7 @@ class User < ApplicationRecord
   with_options presence: true do
     validates :nickname
     validates :email
-    validates :password
+    validates :password, on: :create
     validates :self_introduction
   end
 
@@ -23,7 +23,7 @@ class User < ApplicationRecord
   has_many :for_recommends, class_name: 'Recommend', foreign_key: 'recommender_id', dependent: :destroy
 
   has_many :comments, dependent: :destroy
-  has_one :spoiler
+  has_one :spoiler, dependent: :destroy
 
   def follow(user_id)
     follow_relations.create(followed_id: user_id)
