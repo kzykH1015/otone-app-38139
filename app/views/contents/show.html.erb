@@ -5,21 +5,41 @@
       カテゴリー：<%= Category.find(@content.category_id).name %>
     </div>
 
-    <div>
-      ジャンル：<%= @content.genre&.first&.genre_name %>
-    </div>
+    <% if @spoiler.genre_spoiler_id == 1 && @content.user_id != current_user.id %>
+      ジャンル...
+      <div class="spoiler-barrier">《!ネタバレ防止システム作動中!》</div>
+    <% else %> 
+      <div>
+        ジャンル：<%= @content.genre&.first&.genre_name %>
+      </div>
+    <% end %>
 
-    <div>
-      製作者：<%= @content.creator&.first&.creator_name %>
-    </div>
+    <% if @spoiler.creator_spoiler_id == 1 && @content.user_id != current_user.id %>
+      制作者...
+      <div class="spoiler-barrier">《!ネタバレ防止システム作動中!》</div>
+    <% else %> 
+      <div>
+        製作者：<%= @content.creator&.first&.creator_name %>
+      </div>
+    <% end %>
 
-    <div>
-      あらすじ：<%= @content.story_line %>
-    </div>
+    <% if @spoiler.story_line_spoiler_id == 1 && @content.user_id != current_user.id %>
+      あらすじ...
+      <div class="spoiler-barrier">《!ネタバレ防止システム作動中!》</div>
+    <% else %> 
+      <div>
+        あらすじ：<%= @content.story_line %>
+      </div>
+    <% end %>
 
-    <div>
-      発売日・放送日：<%= @content.release_date %>
-    </div><br>
+    <% if @spoiler.genre_spoiler_id == 1 && @content.user_id != current_user.id %>
+      発売日・放送日...
+      <div class="spoiler-barrier">《!ネタバレ防止システム作動中!》</div>
+    <% else %> 
+      <div>
+        発売日・放送日：<%= @content.release_date %>
+      </div><br>
+    <% end %>
 
     <div>
       投稿者：<%= link_to @user.nickname, user_path(@user.id), class:"mini-user-link" %>
@@ -51,7 +71,12 @@
       <h3>コメント一覧</h3>
       <% @content.comments.each do |comment| %>
         <div class="comment">
-          <%= comment.user.nickname %>: <%= comment.comment_text %> 
+          <%= comment.user.nickname %>: 
+          <% if @spoiler.comment_spoiler_id == 1 && comment.user_id != current_user.id %>
+            <span>ネタバレ防止</span>
+          <% else %>
+            <%= comment.comment_text %> 
+          <% end %>
           <% if user_signed_in? %>
             <% if comment.user.id == current_user.id %>
               <%= link_to "削除", comment_path(comment.id), method: :delete, class:"delete-btn" %>

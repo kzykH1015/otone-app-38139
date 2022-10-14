@@ -12,56 +12,50 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   def create
     @user = User.new(sign_up_params)
-    unless @user.valid?
-      render :new and return
-    end
-    session["devise.regist_data"] = {user: @user.attributes}
-    session["devise.regist_data"][:user]["password"] = params[:user]["password"]
+    render :new and return unless @user.valid?
+
+    session['devise.regist_data'] = { user: @user.attributes }
+    session['devise.regist_data'][:user]['password'] = params[:user]['password']
     @spoiler = @user.build_spoiler
     render :new_spoiler
   end
-  
+
   def create_spoiler
-    @user = User.new(session["devise.regist_data"]["user"])
+    @user = User.new(session['devise.regist_data']['user'])
     @spoiler = Spoiler.new(spoiler_params)
-    unless @spoiler.valid?
-      render :new_spoiler and return
-    end
+    render :new_spoiler and return unless @spoiler.valid?
+
     @user.build_spoiler(@spoiler.attributes)
     @user.save
-    session["devise.regist_data"]["user"].clear
+    session['devise.regist_data']['user'].clear
     sign_in(:user, @user)
   end
 
-  
-  
   # GET /resource/edit
   def edit
     @user = User.find(current_user.id)
   end
-  
+
   # PUT /resource
   def update
     @user = User.find(current_user.id)
     @user.update(update_params)
-    unless @user.valid?
-      render :edit and return
-    end
+    render :edit and return unless @user.valid?
+
     @spoiler = Spoiler.find_by(user_id: current_user.id)
     render :edit_spoiler
   end
-  
+
   def update_spoiler
     @user = User.find(current_user.id)
     @spoiler = Spoiler.find_by(user_id: @user.id)
     @spoiler.update(spoiler_params)
-    unless @spoiler.valid?
-      render :edit_spoiler and return
-    end
+    render :edit_spoiler and return unless @spoiler.valid?
+
     @spoiler.update(spoiler_params.merge(user_id: current_user.id))
     redirect_to user_path(current_user.id)
   end
-  
+
   private
 
   def spoiler_params
@@ -73,7 +67,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def update_params
     params.require(:user).permit(:nickname, :email, :self_introduction)
   end
-
 
   # DELETE /resource
   # def destroy

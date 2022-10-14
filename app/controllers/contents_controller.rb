@@ -24,6 +24,7 @@ class ContentsController < ApplicationController
     @user = User.find(@content.user_id)
     @comments = Comment.all
     @comment = Comment.new
+    @spoiler = Spoiler.find_by(user_id: current_user.id)
   end
 
   def edit
