@@ -14,7 +14,7 @@ class ContentForm
     validates :creator_name
     validates :story_line
     validates :release_date
-    validates :user_id
+    validates :user_id, on: :create
   end
 
   def save

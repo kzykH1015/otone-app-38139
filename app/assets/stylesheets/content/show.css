@@ -65,3 +65,8 @@ h1 {
   padding: 3px;
   margin: 5px;
 }
+
+.history-item {
+  font-weight: 500;
+  margin-bottom: 10px;
+}
