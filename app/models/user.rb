@@ -24,6 +24,7 @@ class User < ApplicationRecord
 
   has_many :comments, dependent: :destroy
   has_one :spoiler, dependent: :destroy
+  has_many :histories
 
   def follow(user_id)
     follow_relations.create(followed_id: user_id)

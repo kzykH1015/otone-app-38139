@@ -1,6 +1,6 @@
 .content-show-grid {
   display: grid;
-  grid-template-columns: 500px 1fr;
+  grid-template-columns: 400px 400px 1fr;
 }
 
 .like-icon {
@@ -64,4 +64,9 @@ h1 {
   text-align: center;
   padding: 3px;
   margin: 5px;
+}
+
+.history-item {
+  font-weight: 500;
+  margin-bottom: 10px;
 }

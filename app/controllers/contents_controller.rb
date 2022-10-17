@@ -25,6 +25,7 @@ class ContentsController < ApplicationController
     @comments = Comment.all
     @comment = Comment.new
     @spoiler = Spoiler.find_by(user_id: current_user.id)
+    @histories = History.where(content_id: @content.id)
   end
 
   def edit
@@ -35,10 +36,11 @@ class ContentsController < ApplicationController
   end
 
   def update
-    @content_form = ContentForm.new(content_form_params)
+    @content_form = ContentForm.new(content_update_params)
 
     if @content_form.valid?
-      @content_form.update(content_form_params, @content)
+      @content_form.update(content_update_params, @content)
+      History.create_log(params[:id], current_user.id, "#{@content.title}を編集しました")
       redirect_to content_path(params[:id])
     else
       render :edit
@@ -74,6 +76,11 @@ class ContentsController < ApplicationController
   def content_form_params
     params.require(:content_form).permit(:title, :category_id, :story_line, :release_date, :genre_name,
                                          :creator_name).merge(user_id: current_user.id)
+  end
+
+  def content_update_params
+    params.require(:content_form).permit(:title, :category_id, :story_line, :release_date, :genre_name,
+                                         :creator_name)
   end
 
   def find_content
