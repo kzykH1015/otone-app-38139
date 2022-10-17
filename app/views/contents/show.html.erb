@@ -64,27 +64,27 @@
 
     <%= link_to  "トップページへ", root_path, class:"top-return" %>
   </div>
-  <div class="comment-container">
 
+  <div class="comment-container">
     <div>
-    <div id="comments">
-      <h3>コメント一覧</h3>
-      <% @content.comments.each do |comment| %>
-        <div class="comment">
-          <%= comment.user.nickname %>: 
-          <% if @spoiler.comment_spoiler_id == 1 && comment.user_id != current_user.id %>
-            <span>ネタバレ防止</span>
-          <% else %>
-            <%= comment.comment_text %> 
-          <% end %>
-          <% if user_signed_in? %>
-            <% if comment.user.id == current_user.id %>
-              <%= link_to "削除", comment_path(comment.id), method: :delete, class:"delete-btn" %>
+      <div id="comments">
+        <h3>コメント一覧</h3>
+        <% @content.comments.each do |comment| %>
+          <div class="comment">
+            <%= comment.user.nickname %>: 
+            <% if @spoiler.comment_spoiler_id == 1 && comment.user_id != current_user.id %>
+              <span>ネタバレ防止</span>
+            <% else %>
+              <%= comment.comment_text %> 
             <% end %>
-          <% end %>
-        </div>
-      <% end%>
-    </div>
+            <% if user_signed_in? %>
+              <% if comment.user.id == current_user.id %>
+                <%= link_to "削除", comment_path(comment.id), method: :delete, class:"delete-btn" %>
+              <% end %>
+            <% end %>
+          </div>
+        <% end%>
+      </div>
       <% if user_signed_in? %>
         <%= form_with model: [@content, @comment], url: content_comments_path(@content.id), method: :post, id:"comment-form" do |f| %>
           <%= f.text_area :comment_text, class:"form-field" %>
@@ -94,5 +94,14 @@
         <% end %>
       <% end %>
     </div>
+  </div>
+
+  <div class="history_container">
+    <% @histories.each do |history| %>
+    <div>
+      <%= history.message %><br>
+      <%= history.created_at.strftime('%Y/%m/%d') %>
+     </div>
+    <% end %>
   </div>
 </div>

@@ -25,6 +25,7 @@ class ContentsController < ApplicationController
     @comments = Comment.all
     @comment = Comment.new
     @spoiler = Spoiler.find_by(user_id: current_user.id)
+    @histories = History.where(content_id: @content.id)
   end
 
   def edit
@@ -39,6 +40,7 @@ class ContentsController < ApplicationController
 
     if @content_form.valid?
       @content_form.update(content_form_params, @content)
+      History.create_log(params[:id], current_user.id, "#{@content.title}を編集しました")
       redirect_to content_path(params[:id])
     else
       render :edit
