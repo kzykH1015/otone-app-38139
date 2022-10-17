@@ -3,7 +3,7 @@ class Content < ApplicationRecord
 
   belongs_to :user
   belongs_to :category
-  
+
   has_many :content_genre_relations
   has_many :genre, through: :content_genre_relations
   has_many :content_creator_relations
