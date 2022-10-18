@@ -16,7 +16,7 @@ RSpec.describe Content, type: :model do
       it 'ユーザーが紐づいていないと投稿できない' do
         @content.user = nil
         @content.valid?
-        expect(@content.errors.full_messages).to include("User must exist")
+        expect(@content.errors.full_messages).to include('User must exist')
       end
     end
   end

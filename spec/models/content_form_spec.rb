@@ -18,7 +18,7 @@ RSpec.describe ContentForm, type: :model do
         @content.valid?
         expect(@content.errors.full_messages).to include("Title can't be blank")
       end
-      
+
       it 'カテゴリーが未選択では登録できない' do
         @content.category_id = ''
         @content.valid?

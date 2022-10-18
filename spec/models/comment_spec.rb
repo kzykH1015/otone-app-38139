@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Comment, type: :model do
-  before do 
+  before do
     @comment = FactoryBot.build(:comment)
   end
 
@@ -14,7 +14,7 @@ RSpec.describe Comment, type: :model do
 
     context '新規投稿できないとき' do
       it 'コメントテキストがないと投稿できない' do
-        @comment.comment_text = ""
+        @comment.comment_text = ''
         @comment.valid?
         expect(@comment.errors.full_messages).to include("Comment text can't be blank")
       end
@@ -22,15 +22,14 @@ RSpec.describe Comment, type: :model do
       it 'ユーザーが紐づいていないと投稿できない' do
         @comment.user = nil
         @comment.valid?
-        expect(@comment.errors.full_messages).to include("User must exist")
+        expect(@comment.errors.full_messages).to include('User must exist')
       end
 
       it 'コンテンツが紐づいていないと投稿できない' do
         @comment.content = nil
         @comment.valid?
-        expect(@comment.errors.full_messages).to include("Content must exist")
+        expect(@comment.errors.full_messages).to include('Content must exist')
       end
     end
   end
-
 end
