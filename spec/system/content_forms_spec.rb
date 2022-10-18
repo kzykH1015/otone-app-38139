@@ -18,11 +18,7 @@ RSpec.describe "ContentForms", type: :system do
       basic_pass root_path
       visit root_path
       # ログインする
-      visit new_user_session_path
-      fill_in 'user_email', with: @user.email
-      fill_in 'user_password', with: @user.password
-      find('input[name="commit"]').click
-      expect(current_path).to eq(root_path)
+      sign_in(@user)
       # トップページに作品投稿ページへ遷移するボタンがあることを確認する
       expect(page).to have_content("作品投稿")
       # 作品投稿ページへ移動する
@@ -46,11 +42,7 @@ RSpec.describe "ContentForms", type: :system do
   context '作品の新規投稿ができないとき' do
     it '誤った情報では作品の新規投稿ができずに投稿ページへ戻る' do
       # ログインする
-      visit new_user_session_path
-      fill_in 'user_email', with: @user.email
-      fill_in 'user_password', with: @user.password
-      find('input[name="commit"]').click
-      expect(current_path).to eq(root_path)
+      sign_in(@user)
       # トップページに作品投稿ページへ遷移するボタンがあることを確認する
       expect(page).to have_content("作品投稿")
       # 作品投稿ページへ移動する
