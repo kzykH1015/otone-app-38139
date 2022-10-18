@@ -41,4 +41,8 @@ class User < ApplicationRecord
   def recommendation(user_id)
     recommends.create(recommender_id: user_id)
   end
+
+  def recommend_test(user, another_user)
+    recommends.create(recommender_id: user.id, recommended_id: another_user.id, content_id: 1)
+  end
 end
