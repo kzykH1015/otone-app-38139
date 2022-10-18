@@ -42,7 +42,7 @@ class User < ApplicationRecord
     recommends.create(recommender_id: user_id)
   end
 
-  def recommend_test(user, another_user)
-    recommends.create(recommender_id: user.id, recommended_id: another_user.id, content_id: 1)
+  def recommend_test(user, another_user, content)
+    recommends.create(recommender_id: user.id, recommended_id: another_user.id, content_id: content.id)
   end
 end

@@ -4,8 +4,8 @@ RSpec.describe Recommend, type: :model do
   before do
     @user = FactoryBot.create(:user)
     @another_user = FactoryBot.create(:user)
-    @content = FactoryBot.build(:content)
-    @recommend = @user.recommend_test(@user, @another_user)
+    @content = FactoryBot.create(:content)
+    @recommend = @user.recommend_test(@user, @another_user, @content)
   end
 
   describe 'recommend新規作成' do
@@ -19,7 +19,7 @@ RSpec.describe Recommend, type: :model do
       it 'content_idが空では投稿できない' do
         @recommend.content_id = ''
         @recommend.valid?
-        expect(@recommend.errors.full_messages).to include("Content can't be blank")
+        expect(@recommend.errors.full_messages).to include("Content can't be blank", "Content must exist")
       end
       it 'recommenderが紐づいていなければ投稿できない' do
         @recommend.recommender_id = ''
