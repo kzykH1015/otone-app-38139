@@ -101,7 +101,7 @@
     <% @histories.each do |history| %>
     <div class="history-item">
       <%= history.message %><br>
-      <%= history.created_at.strftime('%Y/%m/%d') %>
+      <span><%= history.created_at.strftime('%Y/%m/%d') %></span>
      </div>
     <% end %>
   </div>
