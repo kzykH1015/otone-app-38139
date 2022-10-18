@@ -1,6 +1,6 @@
 class ContentsController < ApplicationController
   before_action :find_content, only: [:show, :edit, :update]
-  before_action :move_index, except: [:index, :show]
+  before_action :move_login, except: :index
 
   def index
     @contents = Content.all
@@ -87,7 +87,7 @@ class ContentsController < ApplicationController
     @content = Content.find(params[:id])
   end
 
-  def move_index
-    redirect_to root_path unless user_signed_in?
+  def move_login
+    redirect_to new_user_session_path unless user_signed_in?
   end
 end
