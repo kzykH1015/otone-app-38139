@@ -135,3 +135,118 @@ RSpec.describe 'ログイン', type: :system do
     end
   end
 end
+
+RSpec.describe 'ユーザー編集' , type: :system do
+  before do
+    @user = FactoryBot.build(:user)
+    @spoiler = FactoryBot.build(:spoiler)
+  end
+  context 'ユーザー情報を編集できる時' do
+    it '新規登録したユーザーは自分の情報を編集できる' do
+      # トップページへ
+      basic_pass root_path
+      visit root_path
+      # ユーザー新規登録
+      new_user(@user)
+      # ユーザーの詳細ページへ移動する
+      click_link "#{@user.nickname}"
+      # 編集ページへ移動する
+      click_link "情報を編集する"
+      # 現在の情報が初期値として入力されていることを確認する
+      expect(
+        find('#user_nickname').value
+      ).to eq(@user.nickname)
+      expect(
+        find('#user_self_introduction').value
+      ).to eq(@user.self_introduction)
+      expect(
+        find('#user_email').value
+      ).to eq(@user.email)
+      # 変更する項目を入力する
+      fill_in 'user_nickname', with: "newnewnew"
+      # Nextボタンを押すとネタバレ選択画面に遷移する
+      find('input[name="commit"]').click
+      expect(page).to have_content "ネタバレ防止設定の変更"
+      # 現在のネタバレ設定が表示されているか確認する
+      expect(
+        find('#gsi').value
+      ).to eq("#{@spoiler.genre_spoiler_id}")
+      expect(
+        find('#csi').value
+      ).to eq("#{@spoiler.creator_spoiler_id}")
+      expect(
+        find('#slsi').value
+      ).to eq("#{@spoiler.story_line_spoiler_id}")
+      expect(
+        find('#rdsi').value
+      ).to eq("#{@spoiler.release_date_spoiler_id}")
+      expect(
+        find('#cosi').value
+      ).to eq("#{@spoiler.comment_spoiler_id}")
+      # ネタバレの設定を変更する
+      select '表示する', from: 'spoiler[creator_spoiler_id]'
+      # 変更を保存した際にモデルのカウントが変わらないことを確認する
+      expect{
+        find('input[name="commit"]').click
+      }.to change { User.count }.by(0)
+      # ユーザー詳細ページに戻ったことを確認する
+      expect(page).to have_content("ユーザー情報")
+      # 編集した内容が反映されていることを確認する
+      expect(page).to have_content("newnewnew")
+    end
+  end
+  
+  context 'ユーザー情報を編集できない時' do
+    it '編集の際に必要な情報を空欄にすると更新できない' do
+      # トップページへ
+      basic_pass root_path
+      visit root_path
+      # ユーザー新規登録
+      new_user(@user)
+      # ユーザーの詳細ページへ移動する
+      click_link "#{@user.nickname}"
+      # 編集ページへ移動する
+      click_link "情報を編集する"
+      # 現在の情報が初期値として入力されていることを確認する
+      expect(
+        find('#user_nickname').value
+      ).to eq(@user.nickname)
+      expect(
+        find('#user_self_introduction').value
+      ).to eq(@user.self_introduction)
+      expect(
+        find('#user_email').value
+      ).to eq(@user.email)
+      # 変更する項目を入力する
+      fill_in 'user_nickname', with: ""
+      # Nextボタンを押すとユーザー情報編集画面に戻される
+      find('input[name="commit"]').click
+      expect(page).to have_content "ユーザー情報編集"
+      # 情報を入力するとネタバレ設定画面に遷移できる
+      fill_in 'user_nickname', with: "newnewnew"
+      find('input[name="commit"]').click
+      expect(page).to have_content "ネタバレ防止設定の変更"
+      # 現在のネタバレ設定が表示されているか確認する
+      expect(
+        find('#gsi').value
+      ).to eq("#{@spoiler.genre_spoiler_id}")
+      expect(
+        find('#csi').value
+      ).to eq("#{@spoiler.creator_spoiler_id}")
+      expect(
+        find('#slsi').value
+      ).to eq("#{@spoiler.story_line_spoiler_id}")
+      expect(
+        find('#rdsi').value
+      ).to eq("#{@spoiler.release_date_spoiler_id}")
+      expect(
+        find('#cosi').value
+      ).to eq("#{@spoiler.comment_spoiler_id}")
+      # ネタバレの設定を選択しない
+      select '---', from: 'spoiler[genre_spoiler_id]'
+      # Updateボタンを押してもネタバレ設定画面に戻される
+      find('input[name="commit"]').click
+      expect(page).to have_content "ネタバレ防止設定の変更"
+    end
+  end
+end
