@@ -136,6 +136,37 @@ RSpec.describe 'ログイン', type: :system do
   end
 end
 
+RSpec.describe 'ログアウト', type: :system do
+  before do
+    @user = FactoryBot.create(:user)
+  end
+  context 'ログアウトができるとき' do
+    it '保存されているユーザーの情報と合致すればログインができる' do
+      # トップページに移動する
+      basic_pass root_path
+      visit root_path
+      # ログインする
+      sign_in(@user)
+      # ヘッダーにuserのnicknameとログアウトボタンが表示されることを確認する
+      expect(page).to have_content(@user.nickname)
+      expect(page).to have_content("ログアウト")
+      # ログアウトボタンをクリックする
+      click_link "ログアウト"
+      # サインアップページへ遷移するボタンやログインページへ遷移するボタンが表示されていることを確認する
+      expect(page).to have_content('新規登録')
+      expect(page).to have_content('ログイン')
+    end
+  end
+  context 'ログアウトができないとき' do
+    it 'ログインしていないとログアウトできない' do
+      # トップページに移動する
+      visit root_path
+      # トップページにログアウトボタンがないことを確認する
+      expect(page).to have_no_content("ログアウト")
+    end
+  end
+end
+
 RSpec.describe 'ユーザー編集' , type: :system do
   before do
     @user = FactoryBot.build(:user)
