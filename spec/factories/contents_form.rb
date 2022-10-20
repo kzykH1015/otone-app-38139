@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :content_form do
-    title             { 'devilmaycry5' }
+    title             { Faker::Name.initials(number: 6) }
     category_id       { 1 }
     genre_name        { 'devil' }
     creator_name      { 'capcom' }
