@@ -1,5 +1,5 @@
 module NewUserSupport
-  def new_user(user)
+  def new_user(_user)
     visit new_user_registration_path
     fill_in 'user_nickname', with: @user.nickname
     fill_in 'user_email', with: @user.email
@@ -14,7 +14,7 @@ module NewUserSupport
     select '表示しない', from: 'spoiler[comment_spoiler_id]'
     find('input[name="commit"]').click
     expect(current_path).to eq(spoilers_path)
-    click_link "トップへ戻る"
+    click_link 'トップへ戻る'
     expect(current_path).to eq(root_path)
   end
 end

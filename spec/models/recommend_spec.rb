@@ -19,7 +19,7 @@ RSpec.describe Recommend, type: :model do
       it 'content_idが空では投稿できない' do
         @recommend.content_id = ''
         @recommend.valid?
-        expect(@recommend.errors.full_messages).to include("Content can't be blank", "Content must exist")
+        expect(@recommend.errors.full_messages).to include("Content can't be blank", 'Content must exist')
       end
       it 'recommenderが紐づいていなければ投稿できない' do
         @recommend.recommender_id = ''
