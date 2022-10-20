@@ -27,7 +27,7 @@ RSpec.describe '作品の編集履歴', type: :system do
       click_link "#{@content_form.title}"
       expect(page).to have_content("【#{@content_form.title}】詳細ページ")
       # 作品の編集ページへ移動する
-      click_link "作品の情報を編集する"
+      click_link '作品の情報を編集する'
       # 編集ページで内容を変更し、更新する
       fill_in 'content_form_title', with: 'superman'
       find('input[name="commit"]').click
