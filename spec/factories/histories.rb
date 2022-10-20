@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :history do
-    message  {"aaaaaa"}
+    message { 'aaaaaa' }
 
     user
     content

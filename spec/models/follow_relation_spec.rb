@@ -13,17 +13,17 @@ RSpec.describe FollowRelation, type: :model do
         expect(@follow).to be_valid
       end
     end
-    
+
     context 'フォローできる時' do
       it 'フォローするuserが存在しない時、フォローできない' do
-        @follow.follower_id = ""
+        @follow.follower_id = ''
         @follow.valid?
-        expect(@follow.errors.full_messages).to include("Follower must exist", "Follower can't be blank")
+        expect(@follow.errors.full_messages).to include('Follower must exist', "Follower can't be blank")
       end
       it 'フォローされるuserが存在しない時、フォローできない' do
-        @follow.followed_id = ""
+        @follow.followed_id = ''
         @follow.valid?
-        expect(@follow.errors.full_messages).to include("Followed must exist", "Followed can't be blank")
+        expect(@follow.errors.full_messages).to include('Followed must exist', "Followed can't be blank")
       end
       it '既に同じ組み合わせが存在する時、保存できない' do
         @follow.save

@@ -4,7 +4,7 @@ RSpec.describe History, type: :model do
   before do
     @user = FactoryBot.create(:user)
     @content = FactoryBot.create(:content)
-    @message = "aaaaa"
+    @message = 'aaaaa'
     @history = History.create_log(@content.id, @user.id, @message)
   end
 
@@ -26,7 +26,7 @@ RSpec.describe History, type: :model do
         expect(@history.errors.full_messages).to include("Content can't be blank")
       end
       it 'messageが空の時、履歴が残らない' do
-        @history.message = ""
+        @history.message = ''
         @history.valid?
         expect(@history.errors.full_messages).to include("Message can't be blank")
       end
