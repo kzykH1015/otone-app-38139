@@ -153,3 +153,39 @@ RSpec.describe "作品情報編集", type: :system do
     end
   end
 end
+
+RSpec.describe "作品の検索", type: :system do
+  before do
+    @user = FactoryBot.create(:user)
+    @content_form = FactoryBot.build(:content_form)
+    @date = "002000/10/15"
+  end
+  context '作品の検索が成功する時' do 
+    it '正しい情報を入力すれば作品の新規投稿ができてトップページに移動する' do
+      # トップページに移動する
+      basic_pass root_path
+      # ログインする
+      sign_in(@user)
+      # 作品を投稿
+      new_content(@user, @content_form, @date)
+      # 検索ページに移動し、投稿した作品が表示されていることを確認
+      visit search_content_contents_path
+      expect(page).to have_content("作品検索ページ")
+      expect(page).to have_content(@content_form.title)
+      # 作品を検索した際に結果が正しく出るか確認 1回目
+      check "q_category_id_in_1"
+      find('input[name="commit"]').click
+      expect(page).to have_content(@content_form.title)
+      # 作品を検索した際に結果が正しく出るか確認 2回目
+      uncheck "q_category_id_in_1"
+      check "q_category_id_in_2"
+      find('input[name="commit"]').click
+      expect(page).to have_no_content(@content_form.title)
+      # 作品を検索した際に結果が正しく出るか確認 3回目
+      check "q_category_id_in_1"
+      check "q_category_id_in_4"
+      find('input[name="commit"]').click
+      expect(page).to have_content(@content_form.title)
+    end
+  end
+end

@@ -15,5 +15,6 @@ module NewContentSupport
     }.to change { Content.count }.by(1)
     expect(current_path).to eq(root_path)
     expect(page).to have_content(content_form.title)
+    # トップページにあることを確認
   end
 end
