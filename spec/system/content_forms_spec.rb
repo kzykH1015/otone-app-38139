@@ -76,7 +76,7 @@ RSpec.describe '作品情報編集', type: :system do
       # ユーザーを作成する
       new_user(@user)
       # 作品を保存する
-      new_content(@user, @content_form, @date)
+      new_content(@content_form, @date)
       # 作品詳細詳細ページに移動する
       click_link "#{@content_form.title}"
       expect(page).to have_content("【#{@content_form.title}】詳細ページ")
@@ -119,7 +119,7 @@ RSpec.describe '作品情報編集', type: :system do
       # ユーザーを作成する
       new_user(@user)
       # 作品を保存する
-      new_content(@user, @content_form, @date)
+      new_content(@content_form, @date)
       # 作品詳細詳細ページに移動する
       click_link "#{@content_form.title}"
       expect(page).to have_content("【#{@content_form.title}】詳細ページ")
@@ -166,7 +166,7 @@ RSpec.describe '作品の検索', type: :system do
       # ログインする
       sign_in(@user)
       # 作品を投稿
-      new_content(@user, @content_form, @date)
+      new_content(@content_form, @date)
       # 検索ページに移動し、投稿した作品が表示されていることを確認
       visit search_content_contents_path
       expect(page).to have_content('作品検索ページ')

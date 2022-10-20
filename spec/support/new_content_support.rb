@@ -1,5 +1,5 @@
 module NewContentSupport
-  def new_content(_user, content_form, date)
+  def new_content(content_form, date)
     # 既にログイン状態
     visit root_path
     expect(page).to have_content('作品投稿')
