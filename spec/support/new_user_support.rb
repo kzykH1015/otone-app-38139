@@ -1,11 +1,11 @@
 module NewUserSupport
-  def new_user(_user)
+  def new_user(user)
     visit new_user_registration_path
-    fill_in 'user_nickname', with: @user.nickname
-    fill_in 'user_email', with: @user.email
-    fill_in 'user_password', with: @user.password
-    fill_in 'user_password_confirmation', with: @user.password_confirmation
-    fill_in 'user_self_introduction', with: @user.self_introduction
+    fill_in 'user_nickname', with: user.nickname
+    fill_in 'user_email', with: user.email
+    fill_in 'user_password', with: user.password
+    fill_in 'user_password_confirmation', with: user.password_confirmation
+    fill_in 'user_self_introduction', with: user.self_introduction
     find('input[name="commit"]').click
     select '表示しない', from: 'spoiler[genre_spoiler_id]'
     select '表示しない', from: 'spoiler[creator_spoiler_id]'
