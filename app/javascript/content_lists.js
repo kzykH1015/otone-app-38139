@@ -5,10 +5,10 @@ function list () {
   const selectContent = document.getElementById("select-content-title")
 
   contentList.addEventListener("mouseover",() => {
-    contentList.setAttribute("style", "background-color: #FFBEDA;")
+    contentList.setAttribute("style", "background-color: rgb(155, 255, 255);")
   });
   contentList.addEventListener("mouseout",() => {
-    contentList.removeAttribute("style", "background-color: #FFBEDA;")
+    contentList.removeAttribute("style", "background-color: rgb(155, 255, 255);")
   });
 
   contentList.addEventListener("click", () => {
