@@ -12,7 +12,7 @@
 
   <div class="form-field">
     <div>
-      <label class="form-wrap">制作者：制限</label>
+      <label class="form-wrap">制作者・会社名：制限</label>
     </div>
     <%= f.collection_select(:creator_spoiler_id, SpoilerSelect.all, :id, :name, {include_blank: "---"}, {class:"select-box", id:"csi"}) %>
   </div>

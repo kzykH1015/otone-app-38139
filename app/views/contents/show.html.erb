@@ -15,11 +15,11 @@
     <% end %>
 
     <% if @spoiler.creator_spoiler_id == 1 && @content.user_id != current_user.id %>
-      制作者...
+      制作者・会社名...
       <div class="spoiler-barrier">《!ネタバレ防止システム作動中!》</div>
     <% else %> 
       <div>
-        製作者：<%= @content.creator&.first&.creator_name %>
+        制作者・会社名：<%= @content.creator&.first&.creator_name %>
       </div>
     <% end %>
 
