@@ -12,8 +12,8 @@ class ContentsController < ApplicationController
 
   def create
     @content_form = ContentForm.new(content_form_params)
-    genre_list = params[:content_form][:genre_name].split(" ")
-    creator_list = params[:content_form][:creator_name].split(" ")
+    genre_list = params[:content_form][:genre_name].split(' ')
+    creator_list = params[:content_form][:creator_name].split(' ')
     if @content_form.valid?
       @content_form.save(genre_list, creator_list)
       redirect_to root_path
@@ -44,8 +44,8 @@ class ContentsController < ApplicationController
 
   def update
     @content_form = ContentForm.new(content_update_params)
-    genre_list = params[:content_form][:genre_name].split(" ")
-    creator_list = params[:content_form][:creator_name].split(" ")
+    genre_list = params[:content_form][:genre_name].split(' ')
+    creator_list = params[:content_form][:creator_name].split(' ')
     if @content_form.valid?
       @content_form.update(content_update_params, @content, genre_list, creator_list)
       History.create_log(params[:id], current_user.id, "#{@content.title}を編集しました")

@@ -42,7 +42,7 @@ class ContentForm
       genre.save if g_name.present?
       ContentGenreRelation.create(content_id: content.id, genre_id: genre.id) if g_name.present?
     end
-    
+
     creator_list.each do |c_name|
       content.content_creator_relations.destroy_all
       creator_name = params.delete(:creator_name)
@@ -52,6 +52,5 @@ class ContentForm
     end
 
     content.update(params)
-
   end
 end
