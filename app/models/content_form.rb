@@ -17,7 +17,7 @@ class ContentForm
     validates :user_id, on: :create
   end
 
-  def save(genre_list)
+  def save(genre_list, creator_list)
     content = Content.create(
       title: title, category_id: category_id, story_line: story_line, release_date: release_date, user_id: user_id
     )
@@ -27,27 +27,30 @@ class ContentForm
       ContentGenreRelation.create(content_id: content.id, genre_id: genre.id)
     end
 
-    creator = Creator.where(creator_name: creator_name).first_or_initialize
-    creator.save
-    ContentCreatorRelation.create(content_id: content.id, creator_id: creator.id)
+    creator_list.each do |c_name|
+      creator = Creator.where(creator_name: c_name).first_or_initialize
+      creator.save
+      ContentCreatorRelation.create(content_id: content.id, creator_id: creator.id)
+    end
   end
 
-  def update(params, content, genre_list)
+  def update(params, content, genre_list, creator_list)
     genre_list.each do |g_name|
       content.content_genre_relations.destroy_all
       genre_name = params.delete(:genre_name)
       genre = Genre.where(genre_name: g_name).first_or_initialize if g_name.present?
-      genre.save if genre_name.present?
+      genre.save if g_name.present?
       ContentGenreRelation.create(content_id: content.id, genre_id: genre.id) if g_name.present?
     end
-    
-    content.content_creator_relations.destroy_all
-    creator_name = params.delete(:creator_name)
-    creator = Creator.where(creator_name: creator_name).first_or_initialize if creator_name.present?
-    creator.save if creator_name.present?
-    ContentCreatorRelation.create(content_id: content.id, creator_id: creator.id) if creator_name.present?
+
+    creator_list.each do |c_name|
+      content.content_creator_relations.destroy_all
+      creator_name = params.delete(:creator_name)
+      creator = Creator.where(creator_name: c_name).first_or_initialize if c_name.present?
+      creator.save if c_name.present?
+      ContentCreatorRelation.create(content_id: content.id, creator_id: creator.id) if c_name.present?
+    end
 
     content.update(params)
-
   end
 end
