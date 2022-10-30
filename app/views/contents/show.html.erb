@@ -10,7 +10,10 @@
       <div class="spoiler-barrier">《!ネタバレ防止システム作動中!》</div>
     <% else %> 
       <div>
-        ジャンル：<%= @content.genre&.first&.genre_name %>
+        ジャンル：
+        <% @content.genre.each do |g| %>
+          <%= g.genre_name %> 
+        <% end %>
       </div>
     <% end %>
 
@@ -19,7 +22,7 @@
       <div class="spoiler-barrier">《!ネタバレ防止システム作動中!》</div>
     <% else %> 
       <div>
-        制作者・会社名：<%= @content.creator&.first&.creator_name %>
+        制作者・会社名：<%= @content.creator.first.creator_name %>
       </div>
     <% end %>
 

@@ -17,35 +17,37 @@ class ContentForm
     validates :user_id, on: :create
   end
 
-  def save
+  def save(genre_list)
     content = Content.create(
       title: title, category_id: category_id, story_line: story_line, release_date: release_date, user_id: user_id
     )
-    genre = Genre.where(genre_name: genre_name).first_or_initialize
-    genre.save
-    ContentGenreRelation.create(content_id: content.id, genre_id: genre.id)
+    genre_list.each do |g_name|
+      genre = Genre.where(genre_name: g_name).first_or_initialize
+      genre.save
+      ContentGenreRelation.create(content_id: content.id, genre_id: genre.id)
+    end
 
     creator = Creator.where(creator_name: creator_name).first_or_initialize
     creator.save
     ContentCreatorRelation.create(content_id: content.id, creator_id: creator.id)
   end
 
-  def update(params, content)
-    content.content_genre_relations.destroy_all
+  def update(params, content, genre_list)
+    genre_list.each do |g_name|
+      content.content_genre_relations.destroy_all
+      genre_name = params.delete(:genre_name)
+      genre = Genre.where(genre_name: g_name).first_or_initialize if g_name.present?
+      genre.save if genre_name.present?
+      ContentGenreRelation.create(content_id: content.id, genre_id: genre.id) if g_name.present?
+    end
+    
     content.content_creator_relations.destroy_all
-
-    genre_name = params.delete(:genre_name)
     creator_name = params.delete(:creator_name)
-
-    genre = Genre.where(genre_name: genre_name).first_or_initialize if genre_name.present?
     creator = Creator.where(creator_name: creator_name).first_or_initialize if creator_name.present?
-
-    genre.save if genre_name.present?
     creator.save if creator_name.present?
+    ContentCreatorRelation.create(content_id: content.id, creator_id: creator.id) if creator_name.present?
 
     content.update(params)
 
-    ContentGenreRelation.create(content_id: content.id, genre_id: genre.id) if genre_name.present?
-    ContentCreatorRelation.create(content_id: content.id, creator_id: creator.id) if creator_name.present?
   end
 end
