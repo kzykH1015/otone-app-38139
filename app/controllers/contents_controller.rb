@@ -12,6 +12,7 @@ class ContentsController < ApplicationController
 
   def create
     @content_form = ContentForm.new(content_form_params)
+    
     if @content_form.valid?
       @content_form.save
       redirect_to root_path
