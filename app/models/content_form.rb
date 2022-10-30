@@ -17,13 +17,15 @@ class ContentForm
     validates :user_id, on: :create
   end
 
-  def save
+  def save(genre_list)
     content = Content.create(
       title: title, category_id: category_id, story_line: story_line, release_date: release_date, user_id: user_id
     )
-    genre = Genre.where(genre_name: genre_name).first_or_initialize
-    genre.save
-    ContentGenreRelation.create(content_id: content.id, genre_id: genre.id)
+    genre_list.each do |g_name|
+      genre = Genre.where(genre_name: g_name).first_or_initialize
+      genre.save
+      ContentGenreRelation.create(content_id: content.id, genre_id: genre.id)
+    end
 
     creator = Creator.where(creator_name: creator_name).first_or_initialize
     creator.save

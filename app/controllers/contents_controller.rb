@@ -12,9 +12,9 @@ class ContentsController < ApplicationController
 
   def create
     @content_form = ContentForm.new(content_form_params)
-    
+    genre_list = params[:content_form][:genre_name].split(",")
     if @content_form.valid?
-      @content_form.save
+      @content_form.save(genre_list)
       redirect_to root_path
     else
       render :new
