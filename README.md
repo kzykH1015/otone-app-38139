@@ -68,3 +68,7 @@ https://docs.google.com/spreadsheets/d/11gDWPHXDg8K7Iik-7YiJtIFDTYuQJSID20Gp8x-S
 # データベース設計
 
 ![image](https://user-images.githubusercontent.com/108124770/199002849-d54bb4d9-3827-4d95-9c74-f2f917bd32d4.png)
+
+# 画面遷移図
+
+![image](https://user-images.githubusercontent.com/108124770/199014833-a0867747-42db-48a8-a20b-4be73c27079b.png)
