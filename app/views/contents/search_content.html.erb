@@ -2,7 +2,7 @@
 
 <%= search_form_for @q, url: search_content_contents_path, class:"search-form" do |f| %>
   <div>
-    <%= f.label :title, "【作品名】" %><br>
+    <%= f.label :title, "【タイトル】" %><br>
     <%= f.text_field :title, placeholder: "作品名を入力", value: params[:q]&.dig(:title), class:"form-field" %>
   </div>
 
