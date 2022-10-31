@@ -59,16 +59,34 @@ SNSが普及・発展しいろいろな情報が飛び交う中で、自分が�
 ## 洗い出した要件
 https://docs.google.com/spreadsheets/d/11gDWPHXDg8K7Iik-7YiJtIFDTYuQJSID20Gp8x-SALU/edit?usp=sharing
 
-## 実装した機能についての画像やGIFおよび、その説明
-
 ## 実装予定の機能
  作品検索を「ジャンル」「制作者・会社名」でも行えるように改良予定
 
 
 # データベース設計
 
-![image](https://user-images.githubusercontent.com/108124770/199002849-d54bb4d9-3827-4d95-9c74-f2f917bd32d4.png)
+![image](https://user-images.githubusercontent.com/108124770/199020974-bb2b9058-dded-42ee-9dcf-73b0c83251f4.png)
 
 # 画面遷移図
 
-![image](https://user-images.githubusercontent.com/108124770/199016208-48231e6f-3584-486b-acd0-b6c7829cc9fc.png)
+![image](https://user-images.githubusercontent.com/108124770/199021108-8f6451f3-181c-4b2f-a3de-279b67bca225.png)
+
+## 開発環境
+- フロントエンド
+- バックエンド
+- インフラ
+- テスト
+- テキストエディタ
+- タスク管理
+
+## ローカルでの動作方法
+以下のコマンドを順に実行してください。<br>
+% git clone https://github.com/kzykH1015/otone-app-38139.git<br>
+% cd otone-app-38139<br>
+% bundle install<br>
+% yarn install<br>
+
+## 工夫したポイント
+- ネタバレを防ぐ為に項目ごとに表示する、しないを選択できるようにした点
+- 1つの作品の作品に対して、複数の「ジャンル」と「制作者・会社名」を紐付けれるようにした点
+- Wikipediaのように投稿者以外も作品を編集可能にし、履歴を表示するようにした点
