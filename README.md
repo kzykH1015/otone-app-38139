@@ -9,18 +9,20 @@ OTONE
 https://otone-app-38139.herokuapp.com/
 
 ## 接続情報
-Basic認証 ID/Pass<br>
-  ID: kzyk
-  Pass: 1234
-
-テスト用アカウント等<br>
-  ネタバレ制限なしアカウント<br>
-  メールアドレス: user@one
-  パスワード: userone<br>
-  ネタバレ制限ありアカウント<br>
-  メールアドレス名: user@two
-  パスワード: usertwo
-
+<dl>
+  <dt>Basic認証 ID/Pass</dt>
+  <dd>ID: kzyk</dd>
+  <dd>Pass: 1234</dd>
+</dl>
+  テスト用アカウント
+<dl>
+    <dt>ネタバレ制限なしアカウント</dt>
+      <dd>メールアドレス: user@one</dd>
+      <dd>パスワード: userone</dd><br><br>
+    <dt>ネタバレ制限ありアカウント</dt>
+      <dd>メールアドレス名: user@two</dd>
+      <dd>パスワード: usertwo</dd>
+</dl>
 ## 利用方法
 #### ネタバレ防止機能
 1.ユーザー新規登録時にネタバレを防ぎたい項目を選択することで情報を制限できます。<br>
