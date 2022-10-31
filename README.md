@@ -71,4 +71,4 @@ https://docs.google.com/spreadsheets/d/11gDWPHXDg8K7Iik-7YiJtIFDTYuQJSID20Gp8x-S
 
 # 画面遷移図
 
-![image](https://user-images.githubusercontent.com/108124770/199014833-a0867747-42db-48a8-a20b-4be73c27079b.png)
+![image](https://user-images.githubusercontent.com/108124770/199016208-48231e6f-3584-486b-acd0-b6c7829cc9fc.png)
