@@ -8,7 +8,7 @@ class ContentForm
   )
 
   with_options presence: true do
-    validates :title
+    validates :title, uniqueness: true
     validates :category_id
     validates :genre_name
     validates :creator_name
