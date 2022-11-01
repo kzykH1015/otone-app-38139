@@ -14,7 +14,13 @@
   </div>
 
   <div>
-    <%= f.label :user_nickname_cont, '投稿ユーザー' %>
+    <%= f.label :genre_id_in, "【ジャンル】" %>
+    <br>
+    <%= f.collection_check_boxes(:genre_id_in, Genre.all, :id, :genre_name, {include_blank: "---"} ) %>
+  </div>
+
+  <div>
+    <%= f.label :user_nickname_cont, '【投稿ユーザー】' %>
     <br>
     <%= f.text_field :user_nickname_cont, placeholder: 'ユーザー名を入力', class:"form-field" %>
   </div>
@@ -30,7 +36,7 @@
 <% end %>
 
 <h3>検索結果</h3>
-<% @contents.each do |content| %>
+<% @results.each do |content| %>
   <div class="content-search-result">
     <%= link_to content.title, content_path(content.id), class:"content-title" %>
   </div>
