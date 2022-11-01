@@ -2,17 +2,26 @@
 
 <%= search_form_for @q, url: search_content_contents_path, class:"search-form" do |f| %>
   <div>
-    <%= f.label :title, "【タイトル】" %><br>
+    <%= f.label :title, "【タイトル】" %>
+    <br>
     <%= f.text_field :title, placeholder: "作品名を入力", value: params[:q]&.dig(:title), class:"form-field" %>
   </div>
 
   <div>
-    <%= f.label :category_id_in, "【カテゴリー】" %><br>
+    <%= f.label :category_id_in, "【カテゴリー】" %>
+    <br>
     <%= f.collection_check_boxes(:category_id_in, Category.all, :id, :name, {include_blank: "---"} ) %>
   </div>
 
   <div>
-    <%= f.label :release_date_gteq, "【発売日・放送日】" %><br>
+    <%= f.label :user_nickname_cont, '投稿ユーザー' %>
+    <br>
+    <%= f.text_field :user_nickname_cont, placeholder: 'ユーザー名を入力', class:"form-field" %>
+  </div>
+
+  <div>
+    <%= f.label :release_date_gteq, "【発売日・放送日】" %>
+    <br>
     <%= f.date_field :release_date_gteq, class:"date-field" %>〜
     <%= f.date_field :release_date_lteq, class:"date-field" %>
   </div><br>
