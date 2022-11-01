@@ -6,3 +6,8 @@
   margin: 5px;
   display: inline-block;
 }
+
+.search-check-box {
+  font-size: 13px;
+  font-weight: 600;
+}

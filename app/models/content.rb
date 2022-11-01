@@ -1,6 +1,8 @@
 class Content < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
 
+  validates :title, uniqueness: true
+
   belongs_to :user
   belongs_to :category
 

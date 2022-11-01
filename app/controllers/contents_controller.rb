@@ -37,6 +37,7 @@ class ContentsController < ApplicationController
     @genres = Genre.where(content_id: @content.id)
     @genre_list = @content.genre.map { |genre| genre.genre_name }
     @content_form.genre_name = @genre_list
+
     @creators = Creator.where(content_id: @content.id)
     @creator_list = @content.creator.map { |creator| creator.creator_name }
     @content_form.creator_name = @creator_list

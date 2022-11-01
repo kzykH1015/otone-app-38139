@@ -13,10 +13,16 @@
     <%= f.collection_check_boxes(:category_id_in, Category.all, :id, :name, {include_blank: "---"} ) %>
   </div>
 
-  <div>
+  <div class="search-check-box">
     <%= f.label :genre_id_in, "【ジャンル】" %>
     <br>
-    <%= f.collection_check_boxes(:genre_id_in, Genre.all, :id, :genre_name, {include_blank: "---"} ) %>
+    <%= f.collection_check_boxes(:genre_id_in, Genre.all, :id, :genre_name) %>
+  </div>
+
+  <div class="search-check-box">
+    <%= f.label :creator_id_in, "【制作者・会社名】" %>
+    <br>
+    <%= f.collection_check_boxes(:creator_id_in, Creator.all, :id, :creator_name) %>
   </div>
 
   <div>
