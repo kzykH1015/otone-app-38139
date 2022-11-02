@@ -49,7 +49,7 @@ class ContentsController < ApplicationController
     creator_list = params[:content_form][:creator_name].split(' ')
     if @content_form.valid?
       @content_form.update(content_update_params, @content, genre_list, creator_list)
-      History.create_log(params[:id], current_user.id, "編集ユーザー:")
+      History.create_log(params[:id], current_user.id, '編集ユーザー:')
       redirect_to content_path(params[:id])
     else
       render :edit

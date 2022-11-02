@@ -64,7 +64,7 @@
 
     <div>
       <% if user_signed_in? %>
-        <%= link_to "作品の情報を編集する", edit_content_path(params[:id]), class:"content-edit-btn" %>
+        <%= link_to "作品の情報を編集する", edit_content_path(params[:id]), class:"content-edit-btn", id:"content-edit-btn" %>
       <% end %>
     </div>
 
