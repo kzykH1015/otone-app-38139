@@ -2,12 +2,11 @@
   font-size: 20px;
 }
 
+.search-form select {
+  font-size: 18px;
+}
+
 .content-search-result {
   margin: 5px;
   display: inline-block;
-}
-
-.search-check-box {
-  font-size: 13px;
-  font-weight: 600;
 }
