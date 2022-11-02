@@ -3,7 +3,7 @@ class ContentsController < ApplicationController
   before_action :move_login, except: :index
 
   def index
-    @contents = Content.all
+    @contents = Content.all.order(created_at: :desc)
   end
 
   def new
