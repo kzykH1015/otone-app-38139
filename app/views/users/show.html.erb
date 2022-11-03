@@ -29,7 +29,7 @@
           <%= @user.followers.count %>
         <% end %>
         <div>
-          <%= link_to "recommendする", new_user_recommend_path(params[:id]), class:"recommend-btn" %>
+          <%= link_to "オススメする", new_user_recommend_path(params[:id]), class:"recommend-btn" %>
         </div>
       <% end %>
 
@@ -66,7 +66,7 @@
               </div>
               <% if user_signed_in? %>
                 <% if rec.recommender_id == current_user.id %>
-                  <%= link_to "レコメンドの削除", recommend_path(rec.id), method: :delete, class:"delete-btn" %>
+                  <%= link_to "オススメの削除", recommend_path(rec.id), method: :delete, class:"delete-btn" %>
                 <% end %>
               <% end %>
             </div>

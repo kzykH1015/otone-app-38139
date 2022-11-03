@@ -25,7 +25,7 @@
       <% @contents.each do |content| %>
         <div>
           <li class="list-child">
-            タイトル：<%= content.title %>　ID：<%= content.id%>
+            【タイトル】<%= content.title %>　ID：<%= content.id%>
           </li>
           <li class="select-id-child">
           </li>
@@ -33,7 +33,7 @@
       <% end %>
     <div>
   </ul>
-  <%= f.submit "RECOMMEND", class:"recommend-btn" %>
+  <%= f.submit "オススメする", class:"recommend-btn" %>
 <% end %>
 
 <div class="return-btn">

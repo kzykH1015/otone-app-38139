@@ -22,7 +22,7 @@ function list () {
   listChild.forEach((list) => {
     list.addEventListener("click", () => {
       const value = list.innerHTML
-      selectContent.innerHTML = value    
+      selectContent.innerHTML = value
     });
   });
   
