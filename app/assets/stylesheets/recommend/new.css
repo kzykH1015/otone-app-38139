@@ -11,6 +11,7 @@
 
 .select-list {
   display: flex;
+  flex-wrap: wrap;
 }
 .select-list li {
   list-style: none;
@@ -22,9 +23,9 @@
 
 .list-child {
   height: 20px;
-  font-size: 15px;
+  font-size: 17px;
   font-weight: 500;
-  margin: 0 5px;
+  margin: 5px 5px;
   background-color: rgb(155, 255, 255);
   padding: 3px;
   border-radius: 5px;

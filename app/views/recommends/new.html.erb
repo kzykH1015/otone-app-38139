@@ -13,7 +13,7 @@
     オススメする作品：<span id="select-content-title">選択してください</span>
   </div>
   <div>
-    作品ID：<%= f.text_field :content_id, placeholder: "作品のIDを入力",class:"form-field", id:"hidden-id" %>
+    <%= f.text_field :content_id, value:"xxx", placeholder: "作品のIDを入力",class:"hyde", id:"hidden-id" %>
   </div>
 
   <div id="content-lists">
@@ -25,7 +25,8 @@
       <% @contents.each do |content| %>
         <div>
           <li class="list-child">
-            タイトル：<%= content.title %>　ID：<%= content.id%>
+            <span class="hyde", id="list-number"><%= content.id %></span>
+              <%= content.title %>
           </li>
           <li class="select-id-child">
           </li>
@@ -33,7 +34,7 @@
       <% end %>
     <div>
   </ul>
-  <%= f.submit "RECOMMEND", class:"recommend-btn" %>
+  <%= f.submit "オススメする", class:"recommend-btn" %>
 <% end %>
 
 <div class="return-btn">
