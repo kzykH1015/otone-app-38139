@@ -3,7 +3,7 @@ class RecommendsController < ApplicationController
 
   def new
     @user = User.find(params[:user_id])
-    @contents = Content.all
+    @contents = Content.all.order(created_at: :desc)
     @recommend = Recommend.new
   end
 

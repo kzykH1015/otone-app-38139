@@ -23,6 +23,9 @@ function list () {
     list.addEventListener("click", () => {
       const value = list.innerHTML
       selectContent.innerHTML = value
+      const num = document.getElementById("list-number")
+      const contentId = document.getElementById("hidden-id")
+      contentId.value = num.innerHTML
     });
   });
   
