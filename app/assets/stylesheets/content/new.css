@@ -41,6 +41,10 @@
   background-color: rgb(88, 255, 255);
   border-radius: 10px;
 }
+.submit-btn:hover {
+  opacity: 0.8;
+}
+
 .return-btn {
   grid-area: areaE;
   margin-top: 20px;
@@ -56,6 +60,9 @@
   font-weight: 500;
   background-color: rgba(47, 47, 255, 0.792);
   border-radius: 8px;
+}
+.top-return:hover {
+  opacity: 0.8;
 }
 .form-field {
   width: 200px;
