@@ -63,7 +63,7 @@ SNSが普及・発展しいろいろな情報が飛び交う中で、自分が�
 https://docs.google.com/spreadsheets/d/11gDWPHXDg8K7Iik-7YiJtIFDTYuQJSID20Gp8x-SALU/edit?usp=sharing
 
 ## 実装予定の機能
-2022/11/3 未定
+オススメにオススメしたいユーザーの投稿した作品が表示されてしまっているので、消す
 
 
 # データベース設計
