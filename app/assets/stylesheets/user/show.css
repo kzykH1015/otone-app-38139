@@ -96,3 +96,7 @@
   text-decoration: none;
   color: black;
 }
+.mini-user-link:hover {
+  font-weight: 600;
+  color: blue;
+}

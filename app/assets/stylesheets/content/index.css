@@ -50,7 +50,8 @@
 }
 .user-link:hover {
   font-size: 22px;
-  color: darkgrey;
+  font-weight: bold;
+  color: blue;
 }
 /* indexのheader */
 
