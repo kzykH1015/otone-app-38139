@@ -16,6 +16,10 @@
   font-size: 40px;
   color: blue;
 }
+.logo-ne {
+  font-size: 46px;
+  color: red;
+}
 .sub {
   margin-left: 5px;
   font-size: 12px;
@@ -23,6 +27,10 @@
 .sub-t {
   font-size: 11px;
   color: blue;
+}
+.sub-ne {
+  font-size: 14px;
+  color: red;
 }
 
 .user-btn {
