@@ -6,7 +6,7 @@
 ネタバレ防止のために、ユーザー自身が見たい情報を制限することができる。
 
 ## URL
-https://otone-app-38139.herokuapp.com/
+https://otoneapp-38139.onrender.com/
 
 ## 接続情報
 <dl>
