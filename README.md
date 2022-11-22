@@ -64,7 +64,7 @@ SNSが普及・発展しいろいろな情報が飛び交う中で、自分が�
 https://docs.google.com/spreadsheets/d/11gDWPHXDg8K7Iik-7YiJtIFDTYuQJSID20Gp8x-SALU/edit?usp=sharing
 
 ## 実装予定の機能
-
+編集履歴に変更した項目も一緒に表示
 
 
 # データベース設計
