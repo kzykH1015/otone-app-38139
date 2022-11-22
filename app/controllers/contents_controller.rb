@@ -51,30 +51,16 @@ class ContentsController < ApplicationController
     if @content_form.valid?
       @content_form.update(content_update_params, @content, genre_list, creator_list)
       # binding.pry
-      edit_message = ""
-      
-      if @c_form.title != @content_form.title
-        edit_message += "「タイトル」"
-      end
-      if @c_form.release_date != @content_form.release_date.to_date
-        edit_message += "「発売日・放送日」"
-      end
-      if @g_list != genre_list
-        edit_message += "「ジャンル」"
-      end
-      if @cre_list != creator_list
-        edit_message += "「制作者・会社名」"
-      end
-      if @c_form.story_line != @content_form.story_line
-        edit_message += "「あらすじ」"
-      end
-      if "#{@c_form.category_id}" != @content_form.category_id
-        edit_message += "「カテゴリー」"
-      end
+      edit_message = ''
 
-      if edit_message != ""
-        History.create_log(params[:id], current_user.id, "#{edit_message}")
-      end
+      edit_message += '「タイトル」' if @c_form.title != @content_form.title
+      edit_message += '「発売日・放送日」' if @c_form.release_date != @content_form.release_date.to_date
+      edit_message += '「ジャンル」' if @g_list != genre_list
+      edit_message += '「制作者・会社名」' if @cre_list != creator_list
+      edit_message += '「あらすじ」' if @c_form.story_line != @content_form.story_line
+      edit_message += '「カテゴリー」' if "#{@c_form.category_id}" != @content_form.category_id
+
+      History.create_log(params[:id], current_user.id, "#{edit_message}") if edit_message != ''
 
       redirect_to content_path(params[:id])
     else
@@ -138,5 +124,4 @@ class ContentsController < ApplicationController
     @cre_list = @content.creator.map { |creator| creator.creator_name }
     @c_form.creator_name = @cre_list
   end
-
 end
