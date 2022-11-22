@@ -1,6 +1,7 @@
 class ContentsController < ApplicationController
   before_action :find_content, only: [:show, :edit, :update]
   before_action :move_login, except: :index
+  before_action :before_content_data, only: :update
 
   def index
     @contents = Content.all.order(created_at: :desc)
@@ -49,7 +50,32 @@ class ContentsController < ApplicationController
     creator_list = params[:content_form][:creator_name].split(' ')
     if @content_form.valid?
       @content_form.update(content_update_params, @content, genre_list, creator_list)
-      History.create_log(params[:id], current_user.id, '編集ユーザー:')
+      # binding.pry
+      edit_message = ""
+      
+      if @c_form.title != @content_form.title
+        edit_message += "「タイトル」"
+      end
+      if @c_form.release_date != @content_form.release_date.to_date
+        edit_message += "「発売日・放送日」"
+      end
+      if @g_list != genre_list
+        edit_message += "「ジャンル」"
+      end
+      if @cre_list != creator_list
+        edit_message += "「制作者・会社名」"
+      end
+      if @c_form.story_line != @content_form.story_line
+        edit_message += "「あらすじ」"
+      end
+      if "#{@c_form.category_id}" != @content_form.category_id
+        edit_message += "「カテゴリー」"
+      end
+
+      if edit_message != ""
+        History.create_log(params[:id], current_user.id, "#{edit_message}")
+      end
+
       redirect_to content_path(params[:id])
     else
       render :edit
@@ -99,4 +125,18 @@ class ContentsController < ApplicationController
   def move_login
     redirect_to new_user_session_path unless user_signed_in?
   end
+
+  def before_content_data
+    c_attributes = @content.attributes
+    @c_form = ContentForm.new(c_attributes)
+
+    @g = Genre.where(content_id: @content.id)
+    @g_list = @content.genre.map { |genre| genre.genre_name }
+    @c_form.genre_name = @g_list
+
+    @cre = Creator.where(content_id: @content.id)
+    @cre_list = @content.creator.map { |creator| creator.creator_name }
+    @c_form.creator_name = @cre_list
+  end
+
 end
