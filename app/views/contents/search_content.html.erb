@@ -41,12 +41,14 @@
   <%= f.submit "検索する", class:"submit-btn" %>
 <% end %>
 
-<h3>検索結果</h3>
-<% @results.each do |content| %>
-  <div class="content-search-result">
-    <%= link_to content.title, content_path(content.id), class:"content-title" %>
-  </div>
-<% end %>
+<h3 class="sr-title">検索結果</h3>
+<div class="csr-border">
+  <% @results.each do |content| %>
+    <div class="content-search-result">
+      <%= link_to content.title, content_path(content.id), class:"content-title" %>
+    </div>
+  <% end %>
+</div>
 
 <div>
 <%= link_to  "トップページへ", root_path, class:"top-return" %>
