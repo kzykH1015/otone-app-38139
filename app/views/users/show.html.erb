@@ -1,8 +1,8 @@
 <div class="user-show-grid">
-  <div class="left-up">ユーザー情報</div>
+  <div class="left-up">ユーザー詳細</div>
 
   <div class="show-up">
-    <span>作品一覧</span>
+    <span>投稿した作品一覧</span>
     <div>
     <%= link_to "作品検索", search_content_contents_path, class:"content-search-btn" %>
     <%= link_to "作品投稿", new_content_path, class:"new-content-btn" %>
@@ -55,7 +55,7 @@
     </div>
 
     <div class="recommends-container">
-      <div class="recommends-logo">オススメされたリスト</div>
+      <div class="recommends-logo aa">オススメされたリスト</div>
       <div class="recommends-list">
         <% if @recommends.exists? %>
           <% @recommends.each do |rec| %>
@@ -75,7 +75,7 @@
       </div>
     </div>
 
-    <div class="recommends-logo" >お気に入り作品</div>
+    <div class="recommends-logo bb" >お気に入り作品</div>
     <div class="recommends-list">
       <% @likes.each do |like| %>
         <div class="content-wrap">
@@ -83,7 +83,7 @@
         </div>
       <% end %>
     </div>
-    <div class="recommends-logo" >お気に入りユーザー</div>
+    <div class="recommends-logo cc" >お気に入りユーザー</div>
     <div class="recommends-list">
       <% @followes.each do |follow| %>
         <div class="content-wrap">

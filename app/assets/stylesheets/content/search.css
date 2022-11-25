@@ -10,3 +10,11 @@
   margin: 5px;
   display: inline-block;
 }
+
+.sr-title {
+  background-color: aquamarine; 
+}
+.csr-border {
+  border: 3px dotted lightgray;
+  padding: 5px;
+}
