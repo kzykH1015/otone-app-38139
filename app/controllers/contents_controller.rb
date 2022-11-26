@@ -29,6 +29,7 @@ class ContentsController < ApplicationController
     @comment = Comment.new
     @spoiler = Spoiler.find_by(user_id: current_user.id)
     @histories = History.where(content_id: @content.id).order(created_at: :desc)
+    @histories_ten = @histories.first(10)
   end
 
   def edit

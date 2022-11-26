@@ -104,7 +104,7 @@
 
   <div class="history_container">
     <h3>編集履歴</h3>
-    <% @histories.each do |history| %>
+    <% @histories_ten.each do |history| %>
     <div class="history-item">
       <%= history.message %><br>
       <span><%= history.created_at.to_s(:datetime_jp) %></span>
